@@ -1,31 +1,54 @@
 <?php 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+ini_set('display_errors', 1); //mostrar os erros
+ini_set('display_startup_errors', 1); //mostrar os erros
+error_reporting(E_ALL); //mostrar os erros
 
 include_once("persistencia.php");
-
 //buscar os livros ja cadastrados do arquivo JSON
 $livros = buscarDados("livros.json");
+
+$msg = "";
 
 if (isset($_POST["titulo"])) {
 
 $titulo = $_POST["titulo"];
 $genero = $_POST["genero"];
 $paginas = $_POST["qtd_paginas"];
+$autor = $_POST["autor"];
 
+$erros = array();
 
-$livro = array("id" => uniqid(), "titulo" => $titulo, "genero" => $genero, "paginas" => $paginas);
-
-array_push($livros, $livro);
-
-
-salvarDados ($livros, "livros.json");
-
-header("location: livros.php");      
-}
-
+if (trim ($titulo) == '') {
+    array_push($erros, "Informe o titulo");
+    }
+    if (trim ($genero) == '') {
+        array_push($erros, "Informe o genero");
+    }
+    if (trim ($paginas) == '') {
+        array_push($erros, "Informe a quantidade de paginas");
+    }
+    if (trim ($autor) == '') {
+        array_push($erros, "Informe o autor");
+        }
+        
+    if (count($erros) == 0) {
+        $livro = array("id" => uniqid(), "titulo" => $titulo, "genero" => $genero, "paginas" => $paginas, "autor" => $autor);
+            
+        array_push($livros, $livro);
+            
+            
+        salvarDados ($livros, "livros.json");
+            
+        header("location: livros.php");      
+        }
+            
+        else {
+            //print_r ($erros);
+            $msg = implode("<br>", $erros); //pega o array e transforma em uma 
+            }
+                
+    }
 
 ?>
 
@@ -42,7 +65,14 @@ header("location: livros.php");
 <h1>Cadastro de livros</h1>
 
 <h3>Cadastre seu livro aqui</h3>
-<form method="POST" action="" >
+<!--<form method="POST" action="" onsubmit="return validar();">-->
+    <form method="POST" action="">
+
+    <div id="erro" style="color: red">
+        <?= $msg ?>
+    </div>
+
+
     <input type="text" name="titulo" id="titulo" 
         placeholder="Informe o título"  />
     
@@ -60,7 +90,10 @@ header("location: livros.php");
     <input type="number" name="qtd_paginas" id="qtd_paginas" 
         placeholder="Informe o número de páginas">
     <br><br>
+    
+    <input type="text" placeholder="Digite o nome do autor" name="autor" id="autor">
 
+    <br><br>
     <input type="submit" value="Enviar" />
 </form>
 
@@ -72,6 +105,7 @@ header("location: livros.php");
         <th>Título</th>
         <th>Gênero</th>
         <th>Quant. Páginas</th>
+        <th>Autor</th>
         <th>Excluir</th>
     </tr>
 
@@ -101,20 +135,18 @@ header("location: livros.php");
 
         ?></td>
         <td><?php echo $l["paginas"]; ?></td>
-        <td><a href="livro_excluir.php?id=<?php echo $l["id"];?>">Excluir</a></td>
+        <td> <?php echo $l["autor"];?></td>
+        <td><a href="livro_excluir.php?id=<?php echo $l["id"];?>"
+        onclick="return confirm('Confirmar exclusão de <?php echo $l['titulo'] ?>?')">Excluir</a></td>
     
     </tr>
 
     <?php endforeach; ?>
 
 
-    
-    ?>
-
-
-
-
 </table>
+
+<script src="validacao.js"></script>
 
 </body>
 </html>
