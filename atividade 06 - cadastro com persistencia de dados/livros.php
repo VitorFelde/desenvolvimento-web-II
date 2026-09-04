@@ -68,9 +68,7 @@ if (trim ($titulo) == '') {
 <!--<form method="POST" action="" onsubmit="return validar();">-->
     <form method="POST" action="">
 
-    <div id="erro" style="color: red">
-        <?= $msg ?>
-    </div>
+    
 
 
     <input type="text" name="titulo" id="titulo" 
@@ -96,6 +94,11 @@ if (trim ($titulo) == '') {
     <br><br>
     <input type="submit" value="Enviar" />
 </form>
+
+<div id="erro" style="color: red">
+    <br>    
+    <?= $msg ?>
+    </div>
 
 <h3>Livros cadastrados</h3>
 
