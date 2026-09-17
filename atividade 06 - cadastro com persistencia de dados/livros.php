@@ -9,7 +9,10 @@ include_once("persistencia.php");
 $livros = buscarDados("livros.json");
 
 $msg = "";
-
+$titulo = "";
+$paginas = "";
+$autor = "";
+$genero = "";
 if (isset($_POST["titulo"])) {
 
 $titulo = $_POST["titulo"];
@@ -72,24 +75,24 @@ if (trim ($titulo) == '') {
 
 
     <input type="text" name="titulo" id="titulo" 
-        placeholder="Informe o título"  />
+        placeholder="Informe o título" value="<?=$titulo?>"/> <!--dessa forma se o usuario enviar vazio, continua preenchido-->
     
     <br><br> 
 
-    <select name="genero" id="genero">
+    <select name="genero" id="genero" value="<?=$genero?>">
         <option value="">--Selecione o gênero--</option>
-        <option value="D">Drama</option>
-        <option value="F">Ficção</option>
-        <option value="R">Romance</option>
-        <option value="O">Outro</option>
+        <option value="D"<?= $genero == "D" ? $genero = "selected" : ""?>>Drama</option>
+        <option value="F" <?= $genero == "F" ? $genero = "selected" : ""?>>Ficção</option>
+        <option value="R"<?= $genero == "R" ? $genero = "selected" : ""?>>Romance</option>
+        <option value="O"<?= $genero == "O" ? $genero = "selected" : ""?>>Outro</option>
     </select>
     <br><br>
 
     <input type="number" name="qtd_paginas" id="qtd_paginas" 
-        placeholder="Informe o número de páginas">
+        placeholder="Informe o número de páginas" value="<?=$paginas?>">
     <br><br>
     
-    <input type="text" placeholder="Digite o nome do autor" name="autor" id="autor">
+    <input type="text" placeholder="Digite o nome do autor" name="autor" id="autor" value="<?=$autor?>">
 
     <br><br>
     <input type="submit" value="Enviar" />
