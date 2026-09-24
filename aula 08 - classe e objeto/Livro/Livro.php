@@ -2,14 +2,18 @@
 
 class Livro {
 
-    private $titulo;
-    private $autor;
-    private $genero;
-    private $qtdPaginas;
+    private string $titulo;
+    private string $autor;
+    private string $genero;
+    private int $qtdPaginas;
 
 
-
-    
+    public function __construct($t, $a, $g, $qtdPag){//método construtor
+        $this->titulo = $t;
+        $this->autor = $a;
+        $this->genero = $g;
+        $this->qtdPaginas = $qtdPag;
+    }
     public function getTitulo()
     {
         return $this->titulo;
