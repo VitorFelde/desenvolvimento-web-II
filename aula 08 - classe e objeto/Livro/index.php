@@ -2,27 +2,44 @@
 
 include_once("Livro.php");
 
-$livro1 = new Livro();
-$livro2 = new Livro();
-$livro3 = new Livro();
-
-$livro1->setTitulo("Noites Brancas");
-$livro1->setAutor("Dostoievski");
-$livro1->setGenero("Romance");
-$livro1->setQtdPaginas("110");
-
-$livro2->setTitulo("Dom Casmurro");
-$livro2->setAutor("Machado de Assis");
-$livro2->setGenero("Ficção");
-$livro2->setQtdPaginas("300");
-
-$livro3->setTitulo("Pequeno Principe");
-$livro3->setAutor("Saint-Exupéry");
-$livro3->setGenero("Ficção");
-$livro3->setQtdPaginas("100");
+$livro1 = new Livro("Noites Brancas", "Dostoievski", "Romance", "110");
+$livro2 = new Livro("Dom Casmurro", "Machado de Assis", "Ficção", "300");
+$livro3 = new Livro("Pequeno Principe", "Saint-Exupéry", "Ficção", "100");
 
 $grupo = array ($livro1, $livro2, $livro3);
 
-foreach ($grupo as $l) {
+//print_r ($grupo);
+
+/*foreach ($grupo as $l) {
     echo "Titulo: " . $l->getTitulo() . "   Autor: " . $l->getAutor() . " Genero: " . $l->getGenero() . " Quantidade de paginas: " . $l->getQtdPaginas() . "<br>" . "<br>";
-}
+}*/
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de livros</title>
+</head>
+<body>
+
+    <table border="1">
+        <tr>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Genero</th>
+            <th>Páginas</th>
+        </tr>
+
+
+    <?php foreach ($grupo as $livros):?>
+        <tr>
+            <td><?= $livros->getTitulo()?></td>
+            <td><?= $livros->getAutor()?></td>
+            <td><?= $livros->getGenero()?></td>
+            <td><?= $livros->getQtdPaginas()?></td>
+        </tr>
+    <?php endforeach; ?>
+    </table>
+</body>
+</html>
