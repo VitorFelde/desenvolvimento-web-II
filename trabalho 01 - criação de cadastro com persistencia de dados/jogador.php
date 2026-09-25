@@ -1,11 +1,58 @@
-<?php ?>
+<?php 
+
+//criando as variaveis para melhor controle das inputs/resps do user
+
+$nome = "";
+$perna = "";
+$gols = "";
+$assist = "";
+$titulos = "";
+
+if (isset($_POST["nome"])) {
+
+    $nome = $_POST["nome"];
+    $perna = $_POST["perna"];
+    $gols = $_POST["gols"];
+    $assist = $_POST["assist"];
+    $titulos = $_POST["titulos"];
+
+    $msgErro = array();
+
+    if (trim ($nome) == '') {
+        array_push($msgErro, "Informe o nome do(a) jogador(a)");
+    }
+        
+    if (trim ($perna) == '') {
+        array_push($msgErro, "Informe a perna dominante do(a) jogador(a)");
+    }
+
+    if (trim ($gols) == '') {
+        array_push($msgErro, "Informe a quantidade de gols do(a) jogador(a)");
+    }
+
+    if (trim ($assist) == '') {
+        array_push($msgErro, "Informe a quantidade de assistencia do(a) jogador(a)");
+    }
+
+    if (trim ($titulos) == '') {
+        array_push($msgErro, "Informe a quantidade de titulos do(a) jogador(a)");
+    }
+
+    //print_r($msgErro);
+
+    if (count($msgErro) == 0) {
+      $jogador = array("id" => uniqid(), "nome" => $nome, "perna" => $perna, "gols" => $gols, "assists" => $assist, "titulos" => $titulos);
+    }
+
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pen</title>
+    <title>Jogador(a) fera demais</title>
   </head>
   <body>
     <h1>Cadastro de jogadores/jogadoras de futebol</h1>
@@ -14,29 +61,29 @@
 
     <form method="POST" action=""'>
     
-    <input type="text" placeholder="Digite o nome do jogador(a)">
+    <input type="text" placeholder="Digite o nome do jogador(a)" name = "nome" value="<?=$nome?>"/>
     
     <br><br>
     
     <select id="perna" name="perna"'>
         <option>----Perna dominante-----</option>
-        <option value ="D">Direita</option>
-        <option value ="E">Esquerda</option>
-        <option value = "A">Ambidestro(a)</option>
+        <option value ="D" <?=$perna == "D" ? $perna = "selected" : ""?>>Direita</option>
+        <option value ="E"<?=$perna == "E" ? $perna = "selected" : ""?>>Esquerda</option>
+        <option value = "A"<?=$perna == "A" ? $perna = "selected" : ""?>>Ambidestro(a)</option>
     </select>
     
     <br><br>
 
-    <input type="number" placeholder="Quantidade de gols" min=0>
+    <input type="number" placeholder="Quantidade de gols" min=0 name = "gols" value="<?=$gols?>">
 
     <br><br>
     
-    <input type="number" placeholder="Quantidade de assistências" min=0>
+    <input type="number" placeholder="Quantidade de assistências" min=0 name = "assist" value="<?=$assist?>">
 
     <br><br>
 
   
-    <input type="number" placeholder="Quantidade de títulos">
+    <input type="number" placeholder="Quantidade de títulos" name = "titulos" value="<?=$titulos?>">
 
     <br><br>
     
@@ -58,15 +105,35 @@
           <td>Títulos</td>
           <td>Excluir</td>
         </tr>
+
+      <?php
+
+      foreach ($jogadores as $j):
       
+      ?>
+
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><a>Excluir</a></td>
+          <td><?= $j["nome"]?></td>
+          <td><?php
+           
+           if ($j["perna"] == "D") {
+            echo "Direita";
+           }
+           if ($j["perna"] == "E") {
+            echo "Esquerda";
+           }
+           if ($j["perna"] == "A") {
+            echo "Ambidestro(a)";
+           }
+           
+           ?></td>
+          <td><?= $j["gols"]?></td>
+          <td><?= $j["assists"]?></td>
+          <td><?= $j["titulos"]?></td>
+          <td><a href="excluir.php">Excluir</a></td>
         </tr>  
+
+        <?php endforeach ; ?>
     </table>
     
   </body>
