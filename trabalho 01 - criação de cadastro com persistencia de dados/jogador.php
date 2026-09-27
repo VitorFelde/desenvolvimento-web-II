@@ -2,11 +2,22 @@
 
 //criando as variaveis para melhor controle das inputs/resps do user
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include_once('persistenciatop.php');  
+
+$jogadores = buscaTop('jogadores.json');
+
+$mensagem = "";
 $nome = "";
 $perna = "";
 $gols = "";
 $assist = "";
 $titulos = "";
+
+$msgErro = array();
 
 if (isset($_POST["nome"])) {
 
@@ -16,7 +27,6 @@ if (isset($_POST["nome"])) {
     $assist = $_POST["assist"];
     $titulos = $_POST["titulos"];
 
-    $msgErro = array();
 
     if (trim ($nome) == '') {
         array_push($msgErro, "Informe o nome do(a) jogador(a)");
@@ -42,9 +52,21 @@ if (isset($_POST["nome"])) {
 
     if (count($msgErro) == 0) {
       $jogador = array("id" => uniqid(), "nome" => $nome, "perna" => $perna, "gols" => $gols, "assists" => $assist, "titulos" => $titulos);
+      
+      array_push($jogadores, $jogador);
+
     }
 
-}
+    salvarDados($jogadores, 'jogadores.json');
+
+    header("location: jogador.php");
+    
+    }
+    
+
+  else {
+    $mensagem = implode("<br>", $msgErro);
+  }
 ?>
 
 <!DOCTYPE html>
@@ -91,6 +113,8 @@ if (isset($_POST["nome"])) {
 
     </form>
 
+    <div id="mensagem"><?= $mensagem ?></div>
+
     <br><br><br><br>
 
       <h3>Jogadores(as) cadastrados(as): </h3>
@@ -113,7 +137,9 @@ if (isset($_POST["nome"])) {
       ?>
 
         <tr>
-          <td><?= $j["nome"]?></td>
+          <td><?= $j["nome"]?></td>  
+          <!--aqui aquela verificação pra caso o user esquecer de preencher um dos
+          campos e o formulario seja enviaod, não seja resetado as infos que ja haviam sido preenchidas-->
           <td><?php
            
            if ($j["perna"] == "D") {
