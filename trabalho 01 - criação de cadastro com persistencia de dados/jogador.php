@@ -1,5 +1,15 @@
 <?php 
 
+/*professor, esse trabalho foi desenvolvido em dupla por:
+Leandro Dierings de Morais 
+e
+Vitor Moreira Felde
+
+usamos como base o projeto do livro, e decidimos ao final colocar o id para mostrar ao usuario junto a tabela
+
+além disso deixamos diversos comentarios pelos 3 codigos, para mostrar o processo que fizemos na hora de verificar
+as etapas*/
+
 //criando as variaveis para melhor controle das inputs/resps do user
 
 /*if (!file_exists("arquivos")) {
@@ -11,7 +21,12 @@ mas nao foi necessario*/
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-fizemos igual na aula, e ajudou mto a resolver o que tava ficando erradi*/
+fizemos igual na aula, e ajudou mto a resolver o que tava ficando errado
+
+
+segue o link para o repositório do github caso o senhor queira olhar por lá: 
+https://github.com/VitorFelde/desenvolvimento-web-II/tree/main/trabalho%2001%20-%20cria%C3%A7%C3%A3o%20de%20cadastro%20com%20persistencia%20de%20dados
+*/
 
 include_once('persistenciatop.php');  
 
@@ -129,6 +144,7 @@ if (isset($_POST["nome"])) {
     <table border=2>
       
         <tr>
+          <td>Id</td>
           <td>Nome</td>
           <td>Perna dominante</td>
           <td>Gols</td>
@@ -144,6 +160,7 @@ if (isset($_POST["nome"])) {
       ?>
 
         <tr>
+          <td><?=$j["id"]?></td>
           <td><?= $j["nome"]?></td>  
           <!--aqui aquela verificação pra caso o user esquecer de preencher um dos
           campos e o formulario seja enviaod, não seja resetado as infos que ja haviam sido preenchidas-->
