@@ -1,8 +1,7 @@
 <?php 
 
-include_once("persistencia.php");
+include_once("persistenciatop.php");
 
-//1 - receber o id do livro
 
 if (!isset($_GET["id"])){
     echo "Parametro ID nao informado";
@@ -11,12 +10,8 @@ if (!isset($_GET["id"])){
 
 $id = $_GET["id"];
 
-//2 - buscar os livros existentes no arquivo JSON
-
 $jogador = buscaDados("jogadores.json");
 
-
-//3 - encontrar o indice do livro no array 
 $i = 0;
 foreach ($jogador as $s) {
     if ($s["id"] == $id) {
@@ -27,16 +22,9 @@ foreach ($jogador as $s) {
 
 }
 
-//4 - executar a funcao excluir
-//array_splice ( , )
-
 array_splice ($jogador, $i, 1);
-
-
-//5 - salvar os dados no arquico JSON
 
 salvarDados($jogador, "jogadores.json");
 
-//6 - redirecionar para os livros.php
 
 header("location: jogador.php");
