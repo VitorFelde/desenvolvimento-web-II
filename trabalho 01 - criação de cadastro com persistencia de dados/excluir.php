@@ -13,12 +13,12 @@ $id = $_GET["id"];
 
 //2 - buscar os livros existentes no arquivo JSON
 
-$livros = buscarDados("livros.json");
+$jogador = buscaDados("jogadores.json");
 
 
 //3 - encontrar o indice do livro no array 
 $i = 0;
-foreach ($livros as $s) {
+foreach ($jogador as $s) {
     if ($s["id"] == $id) {
         break;
     }
@@ -30,14 +30,13 @@ foreach ($livros as $s) {
 //4 - executar a funcao excluir
 //array_splice ( , )
 
-array_splice ($livros, $i, 1);
+array_splice ($jogador, $i, 1);
 
 
 //5 - salvar os dados no arquico JSON
 
-salvarDados($livros, "livros.json");
+salvarDados($jogador, "jogadores.json");
 
 //6 - redirecionar para os livros.php
 
-header("location: jogador.php");      
-
+header("location: jogador.php");
