@@ -2,13 +2,20 @@
 
 //criando as variaveis para melhor controle das inputs/resps do user
 
-ini_set('display_errors', 1);
+/*if (!file_exists("arquivos")) {
+    mkdir("arquivos", 0777, true); // Tenta criar a pasta automaticamente
+}quando estavamos tentando resolver o problema de nao estar sendo incluido na table, pesquisamos e esse resultado seria basicamente pra criar a pasta arquivos
+mas nao foi necessario*/
+
+/*ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+fizemos igual na aula, e ajudou mto a resolver o que tava ficando erradi*/
+
 include_once('persistenciatop.php');  
 
-$jogadores = buscaTop('jogadores.json');
+$jogadores = buscaDados('jogadores.json');
 
 $mensagem = "";
 $nome = "";
@@ -32,7 +39,7 @@ if (isset($_POST["nome"])) {
         array_push($msgErro, "Informe o nome do(a) jogador(a)");
     }
         
-    if (trim ($perna) == '') {
+    if (trim ($perna) == '' || $perna == '----Perna dominante-----') { //essa foi a forma que achei de verificar quando o usuario nao poe nada
         array_push($msgErro, "Informe a perna dominante do(a) jogador(a)");
     }
 
@@ -55,18 +62,18 @@ if (isset($_POST["nome"])) {
       
       array_push($jogadores, $jogador);
 
-    }
-
-    salvarDados($jogadores, 'jogadores.json');
-
-    header("location: jogador.php");
-    
-    }
-    
-
-  else {
-    $mensagem = implode("<br>", $msgErro);
-  }
+      salvarDados($jogadores, 'jogadores.json');
+  
+      header("location: jogador.php");
+      
+      
+      }
+      
+      
+      else {
+        $mensagem = implode("<br>", $msgErro);
+        }
+      }
 ?>
 
 <!DOCTYPE html>
@@ -81,17 +88,17 @@ if (isset($_POST["nome"])) {
 
     <h3>Cadastar um novo jogador(a)</h3>
 
-    <form method="POST" action=""'>
+    <form method="POST" action="">
     
     <input type="text" placeholder="Digite o nome do jogador(a)" name = "nome" value="<?=$nome?>"/>
     
     <br><br>
     
-    <select id="perna" name="perna"'>
-        <option>----Perna dominante-----</option>
-        <option value ="D" <?=$perna == "D" ? $perna = "selected" : ""?>>Direita</option>
-        <option value ="E"<?=$perna == "E" ? $perna = "selected" : ""?>>Esquerda</option>
-        <option value = "A"<?=$perna == "A" ? $perna = "selected" : ""?>>Ambidestro(a)</option>
+    <select id="perna" name="perna">
+      <option>----Perna dominante-----</option>
+      <option value="D" <?= $perna == "D" ? "selected" : "" ?>>Direita</option>
+      <option value="E" <?= $perna == "E" ? "selected" : "" ?>>Esquerda</option>
+      <option value="A" <?= $perna == "A" ? "selected" : "" ?>>Ambidestro(a)</option>
     </select>
     
     <br><br>
@@ -156,7 +163,7 @@ if (isset($_POST["nome"])) {
           <td><?= $j["gols"]?></td>
           <td><?= $j["assists"]?></td>
           <td><?= $j["titulos"]?></td>
-          <td><a href="excluir.php">Excluir</a></td>
+          <td><a href="excluir.php?id=<?= $j["id"] ?>">Excluir</a></td>
         </tr>  
 
         <?php endforeach ; ?>
