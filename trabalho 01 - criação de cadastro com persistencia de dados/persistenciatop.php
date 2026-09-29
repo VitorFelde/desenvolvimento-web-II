@@ -9,7 +9,7 @@ function salvarDados(array $dados, string $nomeArquivo){
                         $json);
 }
 
-function buscaTop (string $nomeArquivo) : array  {
+function buscaDados (string $nomeArquivo) : array  {
     $dados = array();
 
     
