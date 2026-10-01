@@ -19,6 +19,8 @@ for($i=5; $i<=12; $i++) {
 
 echo fatorial ($i) . "<br>";
 
+echo "testando vscode";
+
 }
 
 
