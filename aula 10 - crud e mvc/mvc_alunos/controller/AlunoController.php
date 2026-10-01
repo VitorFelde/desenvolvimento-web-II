@@ -2,5 +2,7 @@
 
 class AlunoController {
 
+    public function listar(){
 
+    }
 }
