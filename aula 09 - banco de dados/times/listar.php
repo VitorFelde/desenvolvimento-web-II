@@ -45,6 +45,6 @@ $dados = $stmt->fetchAll();
         <?php endforeach; ?>
     </table>
 
-    <a href="   ">Inserir novo time</a>
+    <a href="inserir.php?nome=Santos&cidade=Santos">Inserir novo time</a>
 </body>
 </html>

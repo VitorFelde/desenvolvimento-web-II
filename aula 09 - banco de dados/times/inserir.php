@@ -25,13 +25,13 @@ if ($nome == ''  || $cidade == '' ){
 
 //inserir o time no banco de dados
 
-$sql = "INSERT INTO times (nome, cidade) VALUES ('" . $nome . "', '" . $cidade . "')";
+$sql = "INSERT INTO times (nome, cidade) VALUES (? , ?)"; //funcionalidade de parametros, pra evitar sql injection
 
 $conn = Connection::getConnection();
 
     $stmt = $conn->prepare($sql); 
 
-    $stmt->execute();
+    $stmt->execute(array($nome, $cidade)); //passando parametros no execute para eviar o sql injection tbm
 
 
 //redirecionar para a listagem

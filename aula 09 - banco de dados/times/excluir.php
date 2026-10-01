@@ -1,5 +1,9 @@
     <?php 
 
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
     include_once("Connection.php");
     //1 - receber o ID do time
 
@@ -18,12 +22,12 @@
 
     //2 - excluir o time do banco de dados
 
-    $sql = "DELETE FROM times WHERE id = " . $id; 
+    $sql = "DELETE FROM times WHERE id = ?"; //prevenção de sql injection - tiramos a concatenação e usamos o = parametro
     $conn = Connection::getConnection();
 
     $stmt = $conn->prepare($sql); 
 
-    $stmt->execute();
+    $stmt->execute(array($id));
 
     //3 - redirecionar para a listagem 
 
