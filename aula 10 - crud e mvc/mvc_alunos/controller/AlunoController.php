@@ -1,6 +1,6 @@
 <?php
 
-include_once(__DIR__ . "/../util/AlunoDAO.PHP");
+include_once(__DIR__ . "/../dao/AlunoDAO.php");
 
 class AlunoController {
 
@@ -8,9 +8,9 @@ class AlunoController {
 
     public function __construct(){
         $this->alunoDAO = new AlunoDAO();
-    }
+}
 
     public function listar(){
-        $this->alunoDAO->listar();
+        return $this->alunoDAO->listar();
     }
 }

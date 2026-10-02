@@ -4,6 +4,13 @@ include_once(__DIR__ . "/../../util/Connection.php"); //DIR caminho completo atÃ
 
 $conn = Connection::getConnection();
 
+include_once(__DIR__ . "/../../controller/AlunoController.php");
+
+$alunoCont = new AlunoController();
+$alunos = $alunoCont->listar();
+
+print_r($alunos);   
+
 //print_r($conn);
 include_once(__DIR__ . "/../include/header.php");
 
