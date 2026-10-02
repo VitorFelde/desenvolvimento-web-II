@@ -1,57 +1,64 @@
 <?php 
 
-ini_set('display_errors', 1); //mostrar os erros
-ini_set('display_startup_errors', 1); //mostrar os erros
-error_reporting(E_ALL); //mostrar os erros
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include_once("persistencia.php");
-//buscar os livros ja cadastrados do arquivo JSON
-$livros = buscarDados("livros.json");
 
+$livros = buscarDados("livros.json"); // function call from persistencia
+// we declare the variables empty so they already exist when the page starts
 $msg = "";
 $titulo = "";
 $paginas = "";
 $autor = "";
 $genero = "";
+
 if (isset($_POST["titulo"])) {
 
-$titulo = $_POST["titulo"];
-$genero = $_POST["genero"];
-$paginas = $_POST["qtd_paginas"];
-$autor = $_POST["autor"];
+    $titulo = $_POST["titulo"];
+    $genero = $_POST["genero"];
+    $paginas = $_POST["qtd_paginas"];
+    $autor = $_POST["autor"];
 
-$erros = array();
+    $erros = array();
 
-if (trim ($titulo) == '') {
-    array_push($erros, "Informe o titulo");
+    if (trim($titulo) == '') {
+        array_push($erros, "Informe o titulo");
     }
-    if (trim ($genero) == '') {
+
+    if (trim($genero) == '') {
         array_push($erros, "Informe o genero");
     }
-    if (trim ($paginas) == '') {
+
+    if (trim($paginas) == '') {
         array_push($erros, "Informe a quantidade de paginas");
     }
-    if (trim ($autor) == '') {
+
+    if (trim($autor) == '') {
         array_push($erros, "Informe o autor");
-        }
-        
-    if (count($erros) == 0) {
-        $livro = array("id" => uniqid(), "titulo" => $titulo, "genero" => $genero, "paginas" => $paginas, "autor" => $autor);
-            
-        array_push($livros, $livro);
-            
-            
-        salvarDados ($livros, "livros.json");
-            
-        header("location: livros.php");      
-        }
-            
-        else {
-            //print_r ($erros);
-            $msg = implode("<br>", $erros); //pega o array e transforma em uma 
-            }
-                
     }
+
+    if (count($erros) == 0) {
+
+        $livro = array(
+            "id" => uniqid(), // generates a unique id for each book
+            "titulo" => $titulo,
+            "genero" => $genero,
+            "paginas" => $paginas,
+            "autor" => $autor
+        );
+
+        array_push($livros, $livro); // pushes each book into the array containing all books
+
+        salvarDados($livros, "livros.json");
+
+        header("location: livros.php");
+    }
+    else {
+        $msg = implode("<br>", $erros);
+    }
+}
 
 ?>
 
@@ -63,49 +70,76 @@ if (trim ($titulo) == '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de livros</title>
 </head>
+
 <body>
 
 <h1>Cadastro de livros</h1>
 
 <h3>Cadastre seu livro aqui</h3>
-<!--<form method="POST" action="" onsubmit="return validar();">-->
-    <form method="POST" action="">
 
-    
+<form method="POST" action="">
 
+    <input type="text"
+        name="titulo"
+        id="titulo"
+        placeholder="Informe o título"
+        value="<?=$titulo?>"/>
 
-    <input type="text" name="titulo" id="titulo" 
-        placeholder="Informe o título" value="<?=$titulo?>"/> <!--dessa forma se o usuario enviar vazio, continua preenchido-->
-    
-    <br><br> 
+    <br><br>
 
-    <select name="genero" id="genero" value="<?=$genero?>">
+    <select name="genero" id="genero">
+
         <option value="">--Selecione o gênero--</option>
-        <option value="D"<?= $genero == "D" ? $genero = "selected" : ""?>>Drama</option>
-        <option value="F" <?= $genero == "F" ? $genero = "selected" : ""?>>Ficção</option>
-        <option value="R"<?= $genero == "R" ? $genero = "selected" : ""?>>Romance</option>
-        <option value="O"<?= $genero == "O" ? $genero = "selected" : ""?>>Outro</option>
+
+        <option value="D" <?= $genero == "D" ? $genero = "selected" : "" ?>>
+            Drama
+        </option>
+
+        <option value="F" <?= $genero == "F" ? $genero = "selected" : "" ?>>
+            Ficção
+        </option>
+
+        <option value="R" <?= $genero == "R" ? $genero = "selected" : "" ?>>
+            Romance
+        </option>
+
+        <option value="O" <?= $genero == "O" ? $genero = "selected" : "" ?>>
+            Outro
+        </option>
+
     </select>
-    <br><br>
-
-    <input type="number" name="qtd_paginas" id="qtd_paginas" 
-        placeholder="Informe o número de páginas" value="<?=$paginas?>">
-    <br><br>
-    
-    <input type="text" placeholder="Digite o nome do autor" name="autor" id="autor" value="<?=$autor?>">
 
     <br><br>
-    <input type="submit" value="Enviar" />
+
+    <input type="number"
+        name="qtd_paginas"
+        id="qtd_paginas"
+        placeholder="Informe o número de páginas"
+        value="<?=$paginas?>">
+
+    <br><br>
+
+    <input type="text"
+        placeholder="Digite o nome do autor"
+        name="autor"
+        id="autor"
+        value="<?=$autor?>">
+
+    <br><br>
+
+    <input type="submit" value="Enviar"/>
+
 </form>
 
 <div id="erro" style="color: red">
-    <br>    
+    <br>
     <?= $msg ?>
-    </div>
+</div>
 
 <h3>Livros cadastrados</h3>
 
 <table border="1">
+
     <tr>
         <th>ID</th>
         <th>Título</th>
@@ -115,40 +149,52 @@ if (trim ($titulo) == '') {
         <th>Excluir</th>
     </tr>
 
-    <?php 
-    
-    foreach ($livros as $l): ?>
+    <?php foreach ($livros as $l): ?>
 
     <tr>
+
         <td><?php echo $l["id"]; ?></td>
+
         <td><?php echo $l["titulo"]; ?></td>
-        <td><?php 
-        
+
+        <td>
+
+        <?php
+
         if ($l["genero"] == 'D') {
             echo "Drama";
         }
-        
+
         else if ($l["genero"] == 'F') {
             echo "Ficção";
-        } 
-        
+        }
+
         else if ($l["genero"] == 'R') {
             echo "Romance";
         }
+
         else if ($l["genero"] == 'O') {
             echo "Outro";
         }
 
-        ?></td>
+        ?>
+
+        </td>
+
         <td><?php echo $l["paginas"]; ?></td>
-        <td> <?php echo $l["autor"];?></td>
-        <td><a href="livro_excluir.php?id=<?php echo $l["id"];?>"
-        onclick="return confirm('Confirmar exclusão de <?php echo $l['titulo'] ?>?')">Excluir</a></td>
-    
+
+        <td><?php echo $l["autor"]; ?></td>
+
+        <td>
+            <a href="livro_excluir.php?id=<?php echo $l["id"]; ?>"
+               onclick="return confirm('Confirmar exclusão de <?php echo $l['titulo'] ?>?')">
+               Excluir
+            </a>
+        </td>
+
     </tr>
 
     <?php endforeach; ?>
-
 
 </table>
 
