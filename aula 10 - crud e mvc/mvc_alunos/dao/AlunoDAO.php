@@ -16,9 +16,9 @@ include_once(__DIR__ . "/../model/Aluno.php");
 
             $result = $stmt->fetchAll();
 
-            
+            $alunos = $this->map($result);
 
-            return $result;
+            return $alunos;
         }
 
         public function map(array $dados){
@@ -28,12 +28,14 @@ include_once(__DIR__ . "/../model/Aluno.php");
                 $aluno = new Aluno();
                 $aluno->setId($d["id"]);
                 $aluno->setNome($d["nome"]);
-                $aluno->setEstrangeiro($d["estrangeiros"]);
+                $aluno->setEstrangeiro($d["estrangeiro"]);
                 $aluno->setIdade($d["idade"]);
 
                 $curso = new Curso();
                 $curso->setId($d["id_curso"]);
-                $curso->setCurso($curso);
+                $aluno->setCurso($curso);
+
+                array_push($alunos, $aluno);
            }
 
 

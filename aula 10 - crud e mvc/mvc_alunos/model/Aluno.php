@@ -7,7 +7,7 @@ include_once(__DIR__ . "/Curso.php");
     private ?string $nome;
     private ?int $idade;
     private ?string $estrangeiro;
-    private ?Curso $idCurso;
+    private ?Curso $curso;
 
 
 
@@ -65,6 +65,7 @@ include_once(__DIR__ . "/Curso.php");
         return $this;
     }
 
+    
     /**
      * Get the value of estrangeiro
      */
@@ -84,19 +85,19 @@ include_once(__DIR__ . "/Curso.php");
     }
 
     /**
-     * Get the value of idCurso
+     * Get the value of curso
      */
-    public function getIdCurso(): ?Curso
+    public function getCurso(): ?Curso
     {
-        return $this->idCurso;
+        return $this->curso;
     }
 
     /**
-     * Set the value of idCurso
+     * Set the value of curso
      */
-    public function setIdCurso(?Curso $idCurso): self
+    public function setCurso(?Curso $curso): self
     {
-        $this->idCurso = $idCurso;
+        $this->curso = $curso;
 
         return $this;
     }
