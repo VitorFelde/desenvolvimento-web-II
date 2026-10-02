@@ -1,56 +1,41 @@
 <?php
+
 include_once("persistencia.php");
 
-//1 - receber o id do livro
+// 1 - receive the book id
 
-if (!isset($_GET["id"])){
+if (!isset($_GET["id"])) { // if the user tries to exclude an id that doesn't exist
     echo "Parametro ID nao informado";
-    exit; //serve para fechar a paradinha
+    exit; // stop executing this script right here
 }
 
 $id = $_GET["id"];
 
-//2 - buscar os livros existentes no arquivo JSON
+// 2 - search for the existing books in the JSON file
 
-$livros = buscarDados("livros.json");
+$livros = buscarDados("livros.json"); // search all books to find the correct id
 
+// 3 - find the index of the book in the array
 
-//3 - encontrar o indice do livro no array 
 $i = 0;
+// we create i to have the position; foreach just goes through the array, but doesn't give the position
 foreach ($livros as $s) {
+
     if ($s["id"] == $id) {
         break;
     }
 
     $i++;
-
 }
 
-//4 - executar a funcao excluir
-//array_splice ( , )
+// 4 - execute the delete function
 
-array_splice ($livros, $i, 1);
+array_splice($livros, $i, 1); // remove one element from livros, at position i
 
+// 5 - save the data in the JSON file
 
-//5 - salvar os dados no arquico JSON
+salvarDados($livros, "livros.json"); // save the changes
 
-salvarDados($livros, "livros.json");
+// 6 - redirect to livros.php
 
-//6 - redirecionar para os livros.php
-
-header("location: livros.php");      
-<?php
-
-//1 - receber o id do livro
-
-//2 - buscar os livros existentes no arquivo JSON
-
-//3 - encontrar o indice do livro no array 
-
-//4 - executar a funcao excluir
-
-//array_splice ( , )
-
-//5 - salvar os dados no arquico JSON
-
-//6 - redirecionar para os livros.php
+header("location: livros.php");
