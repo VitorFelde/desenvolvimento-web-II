@@ -33,7 +33,7 @@ include_once(__DIR__ . "/../model/Aluno.php");
 
                 $curso = new Curso();
                 $curso->setId($d["id_curso"]);
-                $curso->setCurso($d[$curso]);
+                $curso->setCurso($curso);
            }
 
 
