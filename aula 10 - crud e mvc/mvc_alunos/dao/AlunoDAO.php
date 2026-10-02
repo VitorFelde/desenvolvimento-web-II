@@ -16,6 +16,8 @@ include_once(__DIR__ . "/../util/Connection.php");
 
             $result = $stmt->fetchAll();
 
+            
+
             return $result;
         }
 }
