@@ -56,7 +56,7 @@ if (isset($_POST["titulo"])) {
         header("location: livros.php");
     }
     else {
-        $msg = implode("<br>", $erros);
+        $msg = implode("<br>", $erros); // joins all error messages into one string, adding a line break between them
     }
 }
 
@@ -77,6 +77,7 @@ if (isset($_POST["titulo"])) {
 
 <h3>Cadastre seu livro aqui</h3>
 
+<!-- empty action means the form submits to the same page -->
 <form method="POST" action="">
 
     <input type="text"
@@ -194,7 +195,7 @@ if (isset($_POST["titulo"])) {
 
     </tr>
 
-    <?php endforeach; ?>
+    <?php endforeach; ?> <!-- marks the end of the foreach loop -->
 
 </table>
 
