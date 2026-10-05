@@ -35,7 +35,7 @@ include_once(__DIR__ . "/../include/header.php");
         <td style ="text-align: center"><?=$al->getNome()?></td>
         <td style ="text-align: center"><?=$al->getIdade()?></td>
         <td style ="text-align: center"><?=$al->getEstrangeiroDesc()?></td>
-        <td style ="text-align: center"><?=$al->getCurso()->getId()?></td> <!--the getId is from type course, so we need to take the object-->
+        <td style ="text-align: center"><?=$al->getCurso()?></td> <!--the getId is from type course, so we need to take the object-->
     </tr>
     <?php endforeach; ?>
 

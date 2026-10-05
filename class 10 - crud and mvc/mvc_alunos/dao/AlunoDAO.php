@@ -36,6 +36,8 @@ include_once(__DIR__ . "/../model/Aluno.php");
 
                 $curso = new Curso();
                 $curso->setId($d["id_curso"]);
+                $curso->setNome($d["nome_curso"]);
+                $curso->setTurno($d["turno_curso"]);
                 $aluno->setCurso($curso);
 
 
