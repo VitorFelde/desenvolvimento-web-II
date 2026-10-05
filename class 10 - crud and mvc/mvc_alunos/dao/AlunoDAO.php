@@ -25,7 +25,7 @@ include_once(__DIR__ . "/../model/Aluno.php");
             $alunos = array();
 
             foreach ($dados as $d) {
-                $aluno = new Aluno();
+                $aluno = new Aluno(); //convertendo os dados de array associativo para tabela associativa
                 $aluno->setId($d["id"]);
                 $aluno->setNome($d["nome"]);
                 $aluno->setEstrangeiro($d["estrangeiro"]);
