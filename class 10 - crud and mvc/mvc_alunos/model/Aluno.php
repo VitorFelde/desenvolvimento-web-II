@@ -10,6 +10,15 @@ include_once(__DIR__ . "/Curso.php");
     private ?Curso $curso;
 
 
+    public function getEstrangeiroDesc(){
+        if ($this->estrangeiro == 'S' || $this->estrangeiro == 's')
+            return 'Sim';
+        elseif ($this->estrangeiro == 'N' || $this->estrangeiro == 'n')
+            return 'Não';
+
+        return "Inválido";
+    }
+
 
     /**
      * Get the value of id

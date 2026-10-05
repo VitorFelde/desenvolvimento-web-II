@@ -9,7 +9,7 @@ include_once(__DIR__ . "/../../controller/AlunoController.php");
 $alunoCont = new AlunoController();
 $alunos = $alunoCont->listar();
 
-print_r($alunos);   
+//print_r($alunos);   
 
 //print_r($conn);
 include_once(__DIR__ . "/../include/header.php");
@@ -27,7 +27,17 @@ include_once(__DIR__ . "/../include/header.php");
         <td>Estrangeiro</td>
         <td>Curso</td>
     </tr>
+    
 
+    <?php foreach ($alunos as $al): ?>
+    <tr>
+        <td style ="text-align: center"><?=$al->getId()?></td>
+        <td style ="text-align: center"><?=$al->getNome()?></td>
+        <td style ="text-align: center"><?=$al->getIdade()?></td>
+        <td style ="text-align: center"><?=$al->getEstrangeiroDesc()?></td>
+        <td style ="text-align: center"><?=$al->getCurso()->getId()?></td> <!--the getId is from type course, so we need to take the object-->
+    </tr>
+    <?php endforeach; ?>
 
 
 </table>

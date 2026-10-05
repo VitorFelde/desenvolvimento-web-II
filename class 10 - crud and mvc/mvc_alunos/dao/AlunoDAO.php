@@ -7,7 +7,10 @@ include_once(__DIR__ . "/../model/Aluno.php");
 
         public function listar(){
 
-            $sql = "SELECT * FROM alunos"; //criando sql
+            $sql = "SELECT a.*, c.nome nome_curso, c.turno turno_curso
+            FROM alunos a
+            JOIN cursos c ON (c.id = a.id_curso)"; //criando sql
+            //we used a stragegy to give a nickname to our variables to write less
             $conn = Connection::getConnection(); //pegando conexao do sql
 
             $stmt = $conn->prepare($sql);
@@ -34,6 +37,8 @@ include_once(__DIR__ . "/../model/Aluno.php");
                 $curso = new Curso();
                 $curso->setId($d["id_curso"]);
                 $aluno->setCurso($curso);
+
+
 
                 array_push($alunos, $aluno);
            }
