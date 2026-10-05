@@ -19,7 +19,7 @@ include_once(__DIR__ . "/../include/header.php");
 <h3>Listagem de alunos </h3>
 
 
-<table border="1">
+<table border="2">
     <tr>
         <td>ID</td>
         <td>Nome</td>
