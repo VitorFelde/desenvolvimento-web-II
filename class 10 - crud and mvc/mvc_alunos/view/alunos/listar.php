@@ -18,7 +18,7 @@ include_once(__DIR__ . "/../include/header.php");
 
 <h3>Listagem de alunos </h3>
 
-
+<a href="inserir.php">Inserir</a>
 <table border="2">
     <tr>
         <td>ID</td>
