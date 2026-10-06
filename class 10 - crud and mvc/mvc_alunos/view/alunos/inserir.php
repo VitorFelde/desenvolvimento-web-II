@@ -19,10 +19,6 @@ if (isset ($_POST["nome"])) {
 
     print_r($aluno);
 }
-
-
-
-
 include_once(__DIR__ . "/form.php");
 
 ?>
