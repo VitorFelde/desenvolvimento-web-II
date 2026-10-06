@@ -34,11 +34,11 @@ include_once(__DIR__ . "/../include/header.php");
         <label for="curso">Curso:</label>
         <select name="curso" id="curso">
 
-            <?php //foreach () ?>
             <option value="" name="">---Selecione---</option>
-            
+            <?php foreach ($cursos as $c): ?>
+            <option value="<?= $c->getNome()?>" name=""> <?= $c ?></option>
             <!--options will be generated in dinamic way-->
-
+            <?php endforeach; ?>
         </select>
     </div>
 
