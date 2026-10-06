@@ -36,7 +36,7 @@ include_once(__DIR__ . "/../include/header.php");
 
             <option value="" name="">---Selecione---</option>
             <?php foreach ($cursos as $c): ?>
-            <option value="<?= $c->getNome()?>" name=""> <?= $c ?></option>
+            <option value="<?= $c->getId()?>" name=""> <?= $c ?></option>
             <!--options will be generated in dinamic way-->
             <?php endforeach; ?>
         </select>
