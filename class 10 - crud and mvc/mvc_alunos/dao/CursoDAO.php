@@ -1,7 +1,7 @@
 <?php
 
 include_once(__DIR__ . "/../util/Connection.php");
-include (__DIR__ . "/../model/Curso.php");
+include_once(__DIR__ . "/../model/Curso.php");
 
 
 class CursoDAO {
@@ -10,11 +10,12 @@ class CursoDAO {
 
         $sql = "SELECT * FROM cursos";
         $conn = Connection::getConnection();
-        $stmt = $conn->prepare();
-        $stmt = $conn->execute();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
         $result = $stmt->fetchAll();
     
         $cursos = $this->map($result);
+
         return $cursos;    
     
     }
@@ -23,10 +24,10 @@ class CursoDAO {
         $cursos = array();
 
         foreach ($dados as $d) {
-            $curso = newCurso();
-            $curso->setId(["id"]); 
-            $curso->setNome(["nome"]); 
-            $curso->setTurno(["turno"]); 
+            $curso = new Curso();
+            $curso->setId($d["id"]); 
+            $curso->setNome($d["nome"]); 
+            $curso->setTurno($d["turno"]); 
             array_push($cursos, $curso);
         }
 

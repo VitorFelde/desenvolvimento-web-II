@@ -1,5 +1,11 @@
 <?php 
 
+include_once(__DIR__ . "/../../controller/CursoController.php");
+
+$cursoCont = new CursoController();
+$cursos = $cursoCont->listar();
+print_r($cursos);
+
 include_once(__DIR__ . "/../include/header.php");
 
 ?>
@@ -27,10 +33,10 @@ include_once(__DIR__ . "/../include/header.php");
     <div>
         <label for="curso">Curso:</label>
         <select name="curso" id="curso">
+
+            <?php //foreach () ?>
             <option value="" name="">---Selecione---</option>
-            <option value="" name="">---Selecione---</option>
-            <option value="" name="">---Selecione---</option>
-            <option value="" name="">---Selecione---</option>
+            
             <!--options will be generated in dinamic way-->
 
         </select>
