@@ -4,7 +4,7 @@ include_once(__DIR__ . "/../../controller/CursoController.php");
 
 $cursoCont = new CursoController();
 $cursos = $cursoCont->listar();
-print_r($cursos);
+//print_r($cursos);
 
 include_once(__DIR__ . "/../include/header.php");
 
@@ -42,8 +42,14 @@ include_once(__DIR__ . "/../include/header.php");
         </select>
     </div>
 
+    <div>
+        <button>Enviar</button>
+    </div>
+
 
 </form>
+
+<a href="listar.php">Voltar</a>
 
 <?php 
 
