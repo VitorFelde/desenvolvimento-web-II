@@ -28,6 +28,9 @@ include_once(__DIR__ . "/../include/header.php");
         <label for="curso">Curso:</label>
         <select name="curso" id="curso">
             <option value="" name="">---Selecione---</option>
+            <option value="" name="">---Selecione---</option>
+            <option value="" name="">---Selecione---</option>
+            <option value="" name="">---Selecione---</option>
             <!--options will be generated in dinamic way-->
 
         </select>
