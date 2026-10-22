@@ -9,15 +9,20 @@ include_once(__DIR__ . "/../service/AlunoService.php");
 class AlunoController {
 
     private AlunoDAO $alunoDAO;
+    private AlunoService $alunoService;
 
     public function __construct(){
         $this->alunoDAO = new AlunoDAO();
-        $this->AlunoService = new AlunoService();
+        $this->alunoService = new AlunoService();
     }
 
     public function listar(){
         return $this->alunoDAO->listar();
     }
+    
+    public function inserir(Aluno $aluno){
+        $erros = $this->alunoService->validar($aluno);
+        
+        return $erros;
+        }
 }
-
-    function inserir() {}

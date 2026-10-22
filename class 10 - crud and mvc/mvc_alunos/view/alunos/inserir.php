@@ -1,6 +1,7 @@
 <?php
 
 include_once (__DIR__ . "/../../model/Aluno.php");
+include_once (__DIR__ . "/../../controller/AlunoController.php");
 
 if (isset ($_POST["nome"])) {
     $nome = trim ($_POST["nome"]) ? trim($_POST["nome"]) : NULL;
@@ -16,6 +17,11 @@ if (isset ($_POST["nome"])) {
     $curso = new Curso();
     $curso->setId($idCurso);
     $aluno->setCurso($curso);
+
+    $alunoCont = new AlunoController();
+    $erros = $alunoCont->inserir($aluno);
+
+    print_r($erros);
 
 }
 include_once(__DIR__ . "/form.php");
