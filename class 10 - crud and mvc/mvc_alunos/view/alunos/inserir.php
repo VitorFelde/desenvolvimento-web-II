@@ -17,7 +17,6 @@ if (isset ($_POST["nome"])) {
     $curso->setId($idCurso);
     $aluno->setCurso($curso);
 
-    print_r($aluno);
 }
 include_once(__DIR__ . "/form.php");
 
