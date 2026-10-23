@@ -23,6 +23,12 @@ class AlunoController {
     public function inserir(Aluno $aluno){
         $erros = $this->alunoService->validar($aluno);
         
+
+        if (empty($erros)) {
+            $msgErro = $this->alunoDAO->inserir($aluno);
+            if ($msgErro)
+                array_push($erros, $msgErro);
+        }
         return $erros;
         }
 }
