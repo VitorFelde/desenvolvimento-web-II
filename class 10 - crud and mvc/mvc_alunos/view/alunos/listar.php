@@ -20,11 +20,13 @@ include_once(__DIR__ . "/../include/header.php");
 <a href="inserir.php">Inserir</a>
 <table border="2">
     <tr>
-        <td>ID</td>
-        <td>Nome</td>
-        <td>Idade</td>
-        <td>Estrangeiro</td>
-        <td>Curso</td>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Estrangeiro</th>
+        <th>Curso</th>
+        <th>Editar</th>
+        <th>Excluir</th>
     </tr>
     
 
@@ -35,6 +37,8 @@ include_once(__DIR__ . "/../include/header.php");
         <td style ="text-align: center"><?=$al->getIdade()?></td>
         <td style ="text-align: center"><?=$al->getEstrangeiroDesc()?></td>
         <td style ="text-align: center"><?=$al->getCurso()?></td> <!--the getId is from type course, so we need to take the object-->
+        <td><a href="alterar.php?id=<?= $al->getId()?>"><img src="../../img/btn_editar.png" alt=""></a></td>
+        <td><a href="excluir.php?id=<?= $al->getId()?>"><img src="../../img/btn_excluir.png" alt=""></a></td>
     </tr>
     <?php endforeach; ?>
 

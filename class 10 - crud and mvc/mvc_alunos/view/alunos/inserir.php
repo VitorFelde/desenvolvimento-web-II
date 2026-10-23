@@ -24,8 +24,13 @@ if (isset ($_POST["nome"])) {
     $alunoCont = new AlunoController();
     $erros = $alunoCont->inserir($aluno);
 
-    $msgErro = implode("<br>", $erros);
-
+    if (empty ($erros)) {
+        header("location: listar.php");
+        exit;
+    }
+    else {
+        $msgErro = implode("<br>", $erros);
+    }
 }
 include_once(__DIR__ . "/form.php");
 
