@@ -24,6 +24,26 @@ include_once(__DIR__ . "/../model/Aluno.php");
             return $alunos;
         }
 
+        public function inserir (Aluno $aluno) {
+            $sql = "INSERT INTO alunos (nome, idade, estrangeiro, id_curso) VALUES (?, ?, ?, ?)";
+            
+            try { //were using this to give a treatment if this function cant add the aluno on table
+            $conn = Connection::getConnection(); 
+            
+            $stmt = $conn->prepare($sql);
+
+            $stmt->execute(array($aluno->getNome(), $aluno->getIdade(), $aluno->getEstrangeiro(), $aluno->getCurso()->getId()));
+
+            $result = $stmt->fetchAll();
+
+            } catch (PDOException $e) {
+                return "Erro ao inserir o aluno" . $e->getMessage();
+            }
+      
+            return "";
+
+            }
+
         public function map(array $dados){
             $alunos = array();
 

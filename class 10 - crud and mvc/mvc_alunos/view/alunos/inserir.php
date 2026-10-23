@@ -4,6 +4,7 @@ include_once (__DIR__ . "/../../model/Aluno.php");
 include_once (__DIR__ . "/../../controller/AlunoController.php");
 
 $msgErro = "";
+$aluno = NULL;
 
 if (isset ($_POST["nome"])) {
     $nome = trim ($_POST["nome"]) ? trim($_POST["nome"]) : NULL;
