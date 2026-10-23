@@ -31,4 +31,8 @@ class AlunoController {
         }
         return $erros;
         }
+
+    public function excluir (int $idAluno){
+        $this->alunoDAO->excluir($idAluno);
+    }
 }
