@@ -34,7 +34,6 @@ include_once(__DIR__ . "/../model/Aluno.php");
 
             $stmt->execute(array($aluno->getNome(), $aluno->getIdade(), $aluno->getEstrangeiro(), $aluno->getCurso()->getId()));
 
-            $result = $stmt->fetchAll();
 
             } catch (PDOException $e) {
                 return "Erro ao inserir o aluno" . $e->getMessage();
@@ -43,6 +42,21 @@ include_once(__DIR__ . "/../model/Aluno.php");
             return "";
 
             }
+
+        public function excluir (int $id){
+            $sql = "DELETE FROM alunos WHERE id = ?";
+            
+            try { 
+            $conn = Connection::getConnection(); 
+            
+            $stmt = $conn->prepare($sql);
+
+            $stmt->execute(array($id));
+
+            } catch (PDOException $e) {
+                return "Erro ao excluir o aluno" . $e->getMessage();
+            }
+        }
 
         public function map(array $dados){
             $alunos = array();
