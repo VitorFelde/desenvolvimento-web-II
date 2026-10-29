@@ -43,6 +43,10 @@ include_once(__DIR__ . "/../include/header.php");
     </div>
 
     <div>
+        <input type="text" value="<?= $aluno ? $aluno->getId() : 0 ?>">
+    </div>
+
+    <div>
         <button>Enviar</button>
     </div>
 </form>

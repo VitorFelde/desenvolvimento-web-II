@@ -15,6 +15,7 @@ if(isset($_POST['nome'])) {
     $idCurso = is_numeric ($_POST["curso"]) ? ($_POST["curso"]) : NULL;
 
     $aluno = new Aluno();
+    //$aluno->setId($id);
     $aluno->setNome($nome);
     $aluno->setIdade($idade);
     $aluno->setEstrangeiro($estrang);
