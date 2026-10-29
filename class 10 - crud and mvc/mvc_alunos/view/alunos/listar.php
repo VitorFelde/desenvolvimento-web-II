@@ -38,7 +38,7 @@ include_once(__DIR__ . "/../include/header.php");
         <td style ="text-align: center"><?=$al->getEstrangeiroDesc()?></td>
         <td style ="text-align: center"><?=$al->getCurso()?></td> <!--the getId is from type course, so we need to take the object-->
         <td><a href="alterar.php?id=<?= $al->getId()?>"><img src="../../img/btn_editar.png" alt=""></a></td>
-        <td><a href="excluir.php?id=<?= $al->getId()?>"><img src="../../img/btn_excluir.png" alt=""></a></td>
+        <td><a href="excluir.php?id=<?= $al->getId()?>"><img src="../../img/btn_excluir.png" alt="" onclick="return confirm('Confirmar exclusão?')"></a></td>
     </tr>
     <?php endforeach; ?>
 
