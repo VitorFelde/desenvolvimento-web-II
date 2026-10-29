@@ -9,13 +9,14 @@ $alunoCont = new AlunoController();
 
 
 if(isset($_POST['nome'])) {
+    $id = $_POST["id"];
     $nome = trim ($_POST["nome"]) ? trim($_POST["nome"]) : NULL;
     $idade = is_numeric ($_POST["idade"]) ? ($_POST["idade"]) : NULL;
     $estrang = trim ($_POST["estrang"]) ? trim($_POST["estrang"]) : NULL;
     $idCurso = is_numeric ($_POST["curso"]) ? ($_POST["curso"]) : NULL;
 
     $aluno = new Aluno();
-    //$aluno->setId($id);
+    $aluno->setId($id);
     $aluno->setNome($nome);
     $aluno->setIdade($idade);
     $aluno->setEstrangeiro($estrang);

@@ -40,7 +40,7 @@ class AlunoController {
         return $this->alunoDAO->buscarPorId($id);
     }
 
-    public function alterar (){
+    public function alterar (Aluno $aluno){
         $erros = $this->alunoService->validar($aluno);
         
 

@@ -10,7 +10,7 @@ include_once(__DIR__ . "/../include/header.php");
 
 ?>
 
-<h3>Inserir aluno</h3>
+<h3><?= $aluno && $aluno->getId() > 0 ? "Alterar" : "Inserir"?></h3>
 
 <form action="" method ="POST">
 
@@ -43,7 +43,7 @@ include_once(__DIR__ . "/../include/header.php");
     </div>
 
     <div>
-        <input type="text" value="<?= $aluno ? $aluno->getId() : 0 ?>">
+        <input type="hidden" name="id" value="<?= $aluno ? $aluno->getId() : 0 ?>">
     </div>
 
     <div>
