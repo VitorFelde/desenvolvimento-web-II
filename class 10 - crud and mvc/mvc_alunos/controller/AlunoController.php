@@ -39,4 +39,17 @@ class AlunoController {
     public function buscarPorId (int $id) : ?Aluno {
         return $this->alunoDAO->buscarPorId($id);
     }
+
+    public function alterar (){
+        $erros = $this->alunoService->validar($aluno);
+        
+
+        if (empty($erros)) {
+            $msgErro = $this->alunoDAO->alterar($aluno);
+            if ($msgErro)
+                array_push($erros, $msgErro);
+        }
+        return $erros;
+    }
 }
+

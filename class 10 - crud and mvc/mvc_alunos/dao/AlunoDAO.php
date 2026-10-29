@@ -69,6 +69,24 @@ include_once(__DIR__ . "/../model/Aluno.php");
 
             }
 
+            public function alterar(Aluno $aluno) {
+                $conn = Connection::getConnection();
+
+                $sql = "UPDATE alunos 
+                        SET nome = ?, idade = ?, estrangeiro = ?, id_curso = ?
+                        WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                
+                try {
+                    $stmt->execute([$aluno->getNome(), $aluno->getIdade(), 
+                                    $aluno->getEstrangeiro(), $aluno->getCurso()->getId(),
+                                    $aluno->getId()]);
+                } catch (PDOException $e) {
+                    return "Erro ao alterar o aluno! " . $e->getMessage();
+                }
+
+                return "";
+            }
         
             public function excluir (int $id){
             $sql = "DELETE FROM alunos WHERE id = ?";
