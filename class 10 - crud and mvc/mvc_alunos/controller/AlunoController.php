@@ -35,4 +35,8 @@ class AlunoController {
     public function excluir (int $idAluno){
         $this->alunoDAO->excluir($idAluno);
     }
+
+    public function buscarPorId (int $id) : ?Aluno {
+        return $this->alunoDAO->buscarPorId($id);
+    }
 }

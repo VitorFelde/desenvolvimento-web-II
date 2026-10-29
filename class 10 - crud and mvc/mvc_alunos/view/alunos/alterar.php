@@ -8,7 +8,6 @@ $aluno = NULL;
 
 if(isset($_POST['nome'])) {
     
-
 } else {
 
     $id = 0;
@@ -20,6 +19,8 @@ if(isset($_POST['nome'])) {
         echo "<a href='listar.php'>Voltar</a>";
         exit;
     }
+
+    $alunoCont = new AlunoController();
 
 }
 
