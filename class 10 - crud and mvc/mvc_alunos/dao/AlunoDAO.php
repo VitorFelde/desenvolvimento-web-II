@@ -41,12 +41,12 @@ include_once(__DIR__ . "/../model/Aluno.php");
         $alunos = $this->map($result);
 
         if(count($alunos) == 1)
-            return $alunos[0];
-        elseif(count($alunos) == 0)
+            return $alunos[0]; //if we find the aluno in the id, we return the only value returned for us in the array
+        elseif(count($alunos) == 0) //if its empty, returns null 
             return null;
 
-        die("AlunoDAO.findById - Erro: mais de um aluno".
-                " encontrado para o ID " . $id);
+        die("AlunoDAO.buscarPorId - Erro: mais de um aluno".
+                " encontrado para o ID " . $id); //die finished the request, and show the error to the user
     }
 
 

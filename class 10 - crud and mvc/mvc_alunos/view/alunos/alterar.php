@@ -21,6 +21,13 @@ if(isset($_POST['nome'])) {
     }
 
     $alunoCont = new AlunoController();
+    $aluno = $alunoCont->buscarPorId($id);
+
+    if (! $aluno) {
+        echo "Nenhum aluno encontrado para o ID!<br>";
+        echo "<a href='listar.php'>Voltar</a>";
+        exit;
+    }
 
 }
 
