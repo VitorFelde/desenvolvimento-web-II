@@ -12,51 +12,57 @@ include_once(__DIR__ . "/../include/header.php");
 
 <h3><?= $aluno && $aluno->getId() > 0 ? "Alterar" : "Inserir"?></h3>
 
-<form action="" method ="POST">
+<div class="row">
+    <div class="col-6">
 
-    <div>
-        <label for="name">Nome:</label>
-        <input type="text" id="nome" name="nome" placeholder="Informe o nome" value="<?= $aluno ? $aluno->getNome() : ""?>">
+        <form action="" method ="POST">
+
+            <div>
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Informe o nome" value="<?= $aluno ? $aluno->getNome() : ""?>" class="form-control">
+            </div>
+            <div>
+                <label for="idade" class="form-label">Idade:</label>
+                <input type="number" id="idade" name="idade" placeholder="Informe a idade" value="<?= $aluno ? $aluno->getIdade() : ""?>"class="form-control">
+            </div>
+            <div>
+                <label for="estrang" class="form-label">Estrangeiro:</label>
+                <select name="estrang" id="estrang" class="form-control">
+                    <option value="" name="">---Selecione---</option>
+                    <option value="S" <?= $aluno && $aluno->getEstrangeiro() == "S" ? "selected" : "" ?>>Sim</option>
+                    <option value="N" <?= $aluno && $aluno->getEstrangeiro() == "N" ? "selected" : "" ?>>Não</option>
+                </select>
+            </div>
+            <div>
+                <label for="curso" class="form-label">Curso:</label>
+                <select name="curso" id="curso" class="form-control">
+
+                    <option value="" name="">---Selecione---</option>
+                    <?php foreach ($cursos as $c): ?>
+                    <option value="<?=$c->getId()?>" <?php if($aluno && $aluno->getCurso()->getId() == $c->getId()) echo "selected"; ?>><?= $c ?></option>
+                    <!--options will be generated in dinamic way-->
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div>
+                <input type="hidden" name="id" value="<?= $aluno ? $aluno->getId() : 0 ?>">
+            </div>
+
+            <div>
+                <button class="btn btn-success mt-3">Enviar</button>
+            </div>
+        </form>
+    </div> <!--closing col-->
+    <div class="col-6">
+        <?php if ($msgErro):?>
+        <div class="alert alert-danger">
+            <?= $msgErro ?>
+        </div>
+        <?php endif; ?>
     </div>
-    <div>
-        <label for="idade">Idade:</label>
-        <input type="number" id="idade" name="idade" placeholder="Informe a idade" value="<?= $aluno ? $aluno->getIdade() : ""?>">
-    </div>
-    <div>
-        <label for="estrang">Estrangeiro:</label>
-        <select name="estrang" id="estrang">
-            <option value="" name="">---Selecione---</option>
-            <option value="S" <?= $aluno && $aluno->getEstrangeiro() == "S" ? "selected" : "" ?>>Sim</option>
-            <option value="N" <?= $aluno && $aluno->getEstrangeiro() == "N" ? "selected" : "" ?>>Não</option>
-        </select>
-    </div>
-    <div>
-        <label for="curso">Curso:</label>
-        <select name="curso" id="curso">
-
-            <option value="" name="">---Selecione---</option>
-            <?php foreach ($cursos as $c): ?>
-            <option value="<?=$c->getId()?>" <?php if($aluno && $aluno->getCurso()->getId() == $c->getId()) echo "selected"; ?>><?= $c ?></option>
-            <!--options will be generated in dinamic way-->
-            <?php endforeach; ?>
-        </select>
-    </div>
-
-    <div>
-        <input type="hidden" name="id" value="<?= $aluno ? $aluno->getId() : 0 ?>">
-    </div>
-
-    <div>
-        <button>Enviar</button>
-    </div>
-</form>
-
-<div>
-    <?= $msgErro ?>
-</div>
-
-
-<a href="listar.php">Voltar</a>
+</div> <!--close row-->
+<a class="btn btn-outline-secondary mt-3" href="listar.php">Voltar</a>
 
 <?php 
 
