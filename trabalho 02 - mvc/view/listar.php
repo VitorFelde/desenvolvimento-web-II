@@ -1,8 +1,8 @@
 <?php 
-include_once(__DIR__ . "/../include/header.php");
+    include_once(__DIR__ . "/../include/header.php");
 ?>
 
-<h3>Listagem de alunos</h3>
+<h3>Listagem de lutadores(as)</h3>
 
 <table border="2">
     <tr>
