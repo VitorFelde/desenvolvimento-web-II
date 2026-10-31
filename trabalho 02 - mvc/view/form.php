@@ -49,3 +49,7 @@ include_once(__DIR__ .  "/../include/header.php");
 <button>Enviar</button>
 
 </form>
+
+<?php 
+    include_once(__DIR__ . "/../include/footer.php");
+?>
