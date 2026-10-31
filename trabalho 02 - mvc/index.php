@@ -1,3 +1,5 @@
 <?php 
 
-header (__DIR__ . "view/listar.php");
+header (__DIR__ . "view/form.php");
+
+?>
