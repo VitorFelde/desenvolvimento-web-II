@@ -1,7 +1,9 @@
 CREATE TABLE categoria (
     id int AUTO_INCREMENT NOT NULL,
-    cat varchar(50) NOT NULL
+    cat varchar(50) NOT NULL,
+    CONSTRAINT categ PRIMARY KEY (id)
 );
+
 
 INSERT INTO categoria (cat) VALUES ("Peso-Mosca");
 INSERT INTO categoria (cat) VALUES ("Peso-Leve");
@@ -10,7 +12,8 @@ INSERT INTO categoria (cat) VALUES ("Peso-Pesado");
 
 CREATE TABLE genero (
     id int AUTO_INCREMENT NOT NULL,
-    gen varchar(10) NOT NULL
+    gen varchar(10) NOT NULL,
+    CONSTRAINT gene PRIMARY KEY (id)
 );
 
 INSERT INTO genero (gen) VALUES ("Masculino");
@@ -22,5 +25,6 @@ CREATE TABLE lutador (
     apelido varchar(100) NOT NULL,
     titulo varchar(1) NOT NULL,
     id_genero int NOT NULL,
-    id_cat int NOT NULL
+    id_cat int NOT NULL,
+    CONSTRAINT lutad PRIMARY KEY (id)
 );
