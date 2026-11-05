@@ -29,11 +29,14 @@ include_once(__DIR__ .  "/../include/header.php");
 </div>
 
 <div>
-    <label>Gênero:</label>
+    <label>Estilo:</label>
     <select>
-        <option value="">--Escolha o gênero em que seu(ua) lutador(a) luta--</option>
-        <option>Masculino</option>
-        <option>Feminino</option>
+        <option value="">--Escolha o estilo em que seu(ua) lutador(a) luta--</option>
+        <option value="">Jiu-Jitsu</option>
+        <option>Kickboxing</option>
+        <option>Wrestling</option>
+        <option>Muay-Thay</option>
+        <option>Judo</option>
     </select>
 </div>
 

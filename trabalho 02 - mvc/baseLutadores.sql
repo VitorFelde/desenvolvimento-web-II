@@ -10,21 +10,24 @@ INSERT INTO categoria (cat) VALUES ("Peso-Leve");
 INSERT INTO categoria (cat) VALUES ("Peso-Meio Pesado");
 INSERT INTO categoria (cat) VALUES ("Peso-Pesado");
 
-CREATE TABLE genero (
+CREATE TABLE estilo (
     id int AUTO_INCREMENT NOT NULL,
-    gen varchar(10) NOT NULL,
+    est varchar(50) NOT NULL,
     CONSTRAINT gene PRIMARY KEY (id)
 );
 
-INSERT INTO genero (gen) VALUES ("Masculino");
-INSERT INTO genero (gen) VALUES ("Feminino");
+INSERT INTO estilo (est) VALUES ("Jiu-Jitsu");
+INSERT INTO estilo (est) VALUES ("Kickboxing");
+INSERT INTO estilo (est) VALUES ("Wrestling");
+INSERT INTO estilo (est) VALUES ("Muay-Thai");
+INSERT INTO estilo (est) VALUES ("Judo");
 
 CREATE TABLE lutador (
     id int AUTO_INCREMENT NOT NULL,
     nome varchar(100) NOT NULL,
     apelido varchar(100) NOT NULL,
     titulo varchar(1) NOT NULL,
-    id_genero int NOT NULL,
-    id_cat int NOT NULL,
+    id_estilo int NOT NULL,
+    id_categoria int NOT NULL,
     CONSTRAINT lutad PRIMARY KEY (id)
 );

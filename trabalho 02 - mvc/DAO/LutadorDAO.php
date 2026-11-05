@@ -1,6 +1,7 @@
 <?php
 
 include_once(__DIR__ . "/../util/Connection.php");
+include_once(__DIR__ . "/../util/Lutador.php");
 
 class LutadorDAO {
     //funcao para listar os alunos que serao inseridos 

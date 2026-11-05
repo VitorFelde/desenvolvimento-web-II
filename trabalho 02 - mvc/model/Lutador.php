@@ -66,10 +66,4 @@
         public function setEstilo(Estilo $estilo){
             $this->estilo = $estilo;
         }
-
-
-
-
-
-
     }
