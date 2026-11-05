@@ -1,5 +1,7 @@
 <?php
 require_once(__DIR__ . "/view/include/header.php");
+
+include_once (__DIR__ . "/view/include/menu.php");
 ?>
 
 <div class="row mt-3 justify-content-center">
