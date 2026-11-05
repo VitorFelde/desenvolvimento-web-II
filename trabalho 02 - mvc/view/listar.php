@@ -1,5 +1,6 @@
 <?php 
     include_once(__DIR__ . "/../include/header.php");
+    include_once(__DIR__ . "/../inserir.php");
 ?>
 
 <h3>Listagem de lutadores(as)</h3>

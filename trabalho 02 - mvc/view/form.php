@@ -20,7 +20,7 @@ include_once(__DIR__ .  "/../include/header.php");
 <div>
     <label>Categoria:</label>
     <select>
-        <option>--Escolha a categoria do seu(ua) lutador(a)--</option>
+        <option value="">--Escolha a categoria do seu(ua) lutador(a)--</option>
         <option>Peso-Mosca</option>
         <option>Peso-Leve</option>
         <option>Peso-Meio Pesado</option>
@@ -32,7 +32,7 @@ include_once(__DIR__ .  "/../include/header.php");
     <label>Estilo:</label>
     <select>
         <option value="">--Escolha o estilo em que seu(ua) lutador(a) luta--</option>
-        <option value="">Jiu-Jitsu</option>
+        <option >Jiu-Jitsu</option>
         <option>Kickboxing</option>
         <option>Wrestling</option>
         <option>Muay-Thay</option>
@@ -43,9 +43,9 @@ include_once(__DIR__ .  "/../include/header.php");
 <div>
     <label>Título:</label>
     <select>
-        <option>Seu(ua) lutador(a) tem cinturão?</option>
-        <option>Sim</option>
-        <option>Não</option>
+        <option value="">Seu(ua) lutador(a) tem cinturão?</option>
+        <option value="">Sim</option>
+        <option value="">Não</option>
     </select>
 </div>
 
