@@ -19,11 +19,18 @@ class LoginController {
 
         //Validar as credencias (login e senha) na tabela "usuarios"
         if(empty($erros)) {
-            //TODO - Realizar o login na aplicação utilizando o recurso de sessões
+        //validar as credenciais (login e senha)    
+        $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
+        if (! $erros) {
+            header("index.php");
+        } else {
+            array_push($erros, "Login ou senha invalidos");
+        }
+        //Realizar o login na aplicação utilizando o recurso de sessões
         }
         
         
         return $erros;
     }
 
-}
+}   

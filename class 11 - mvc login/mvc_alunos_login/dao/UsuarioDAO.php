@@ -10,7 +10,7 @@ class UsuarioDAO {
         $conn = Connection::getConnection();
 
         $sql = "SELECT * FROM usuarios 
-                WHERE BINARY login = ? AND BINARY senha = ?";
+                WHERE BINARY login = ? AND BINARY senha = ?"; //this binary is used because then the database can differ upercase from lowercase
         
         $stm = $conn->prepare($sql);    
         $stm->execute([$login, $senha]);

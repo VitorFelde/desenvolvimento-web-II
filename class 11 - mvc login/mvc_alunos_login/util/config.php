@@ -9,3 +9,5 @@ define("DB_HOST", "localhost");
 define("DB_NAME", "db_crud");
 define("DB_USER", "root");
 define("DB_PASSWORD", "123456");
+
+define("BASE_URL", "/desenvolvimento-web-II/class 11 - mvc login/mvc_alunos_login/");

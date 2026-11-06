@@ -3,6 +3,7 @@
 include_once(__DIR__ . "/../../controller/CursoController.php");
 
 
+
 //Carregar a lista de cursos
 $cursoCont = new CursoController();
 $cursos = $cursoCont->listar();
@@ -10,6 +11,7 @@ $cursos = $cursoCont->listar();
 
 
 //Incluir o cabeçalho da aplicação
+include_once(__DIR__ . "/../include/menu.php");
 include_once(__DIR__ . "/../include/header.php");
 ?>
 
