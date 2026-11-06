@@ -32,4 +32,10 @@ class LoginService {
         return false;
         }
     }
+
+    public function removerUsuarioSessao(){
+        session_start();
+        session_unset();
+        session_destroy();
+    }
 }

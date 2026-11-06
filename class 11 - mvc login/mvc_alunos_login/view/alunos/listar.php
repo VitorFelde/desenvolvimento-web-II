@@ -1,5 +1,5 @@
 <?php 
-
+include_once(__DIR__ . "/../login/validar.php");
 //Testar a conexão
 /*
 include_once(__DIR__ . "/../../util/Connection.php");

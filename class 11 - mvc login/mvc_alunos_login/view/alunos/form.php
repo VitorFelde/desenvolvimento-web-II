@@ -2,6 +2,7 @@
 
 include_once(__DIR__ . "/../../controller/CursoController.php");
 
+include_once(__DIR__ . "/../login/validar.php");
 
 
 //Carregar a lista de cursos

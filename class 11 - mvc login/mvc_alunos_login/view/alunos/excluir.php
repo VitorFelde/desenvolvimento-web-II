@@ -1,6 +1,10 @@
 <?php
 
+
 include_once(__DIR__ . "/../../controller/AlunoController.php");
+include_once(__DIR__ . "/../login/validar.php");
+
+ 
 
 //1- Capturar o ID do aluno a ser excluído
 $id = 0;

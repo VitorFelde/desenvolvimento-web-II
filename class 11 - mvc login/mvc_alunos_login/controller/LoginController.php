@@ -37,4 +37,8 @@ class LoginController {
         return $this->loginService->usuarioEstaLogado();
     }
 
+    public function deslogar(){
+        $this->loginService->removerUsuarioSessao();
+    }
+
 }   
