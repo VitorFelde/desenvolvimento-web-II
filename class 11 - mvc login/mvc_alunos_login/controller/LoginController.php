@@ -21,8 +21,8 @@ class LoginController {
         if(empty($erros)) {
         //validar as credenciais (login e senha)    
         $usuario = $this->usuarioDao->findByLoginSenha($login, $senha);
-        if (! $erros) {
-            header("index.php");
+        if ($usuario) {
+            $this->loginService->salvarUsuarioSessao($usuario);
         } else {
             array_push($erros, "Login ou senha invalidos");
         }
@@ -31,6 +31,10 @@ class LoginController {
         
         
         return $erros;
+    }
+
+    public function usuarioEstaLogado(){     
+        return $this->loginService->usuarioEstaLogado();
     }
 
 }   
