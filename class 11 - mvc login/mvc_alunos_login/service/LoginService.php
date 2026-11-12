@@ -18,14 +18,14 @@ class LoginService {
     }
 
     public function salvarUsuarioSessao(Usuario $usuario){
-        session_start();
+        $this->ativarSessao();
         $_SESSION[USU_LOGADO_ID] = $usuario->getId();
         $_SESSION[USU_LOGADO_NOME] = $usuario->getNome();
 
     }
 
     public function usuarioEstaLogado(){
-        session_start();
+        $this->ativarSessao();
         if (isset($_SESSION[USU_LOGADO_ID])){
             return true;
         } else {
@@ -34,8 +34,22 @@ class LoginService {
     }
 
     public function removerUsuarioSessao(){
-        session_start();
+        $this->ativarSessao();
         session_unset();
         session_destroy();
+    }
+
+    public function getNomeUsuarioLogado (){
+        if ($this->usuarioEstaLogado() == true) {
+            return $_SESSION[USU_LOGADO_NOME];
+        } else {
+            return "Não logado";    
+        }
+    }
+
+    private function ativarSessao (){
+        if (session_status() != PHP_SESSION_ACTIVE){
+            session_start();
+        }
     }
 }

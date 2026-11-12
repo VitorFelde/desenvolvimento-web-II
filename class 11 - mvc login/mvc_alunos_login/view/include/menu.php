@@ -1,6 +1,13 @@
 <?php 
-include_once(__DIR__ . "/../../util/config.php")
+include_once(__DIR__ . "/../../util/config.php");
+include_once(__DIR__ . "/../../controller/LoginController.php");
+
+$loginCont = new LoginController();
+
+$nome = $loginCont->getNomeUsuarioLogado();
+
 ?>
+
 
 <nav class="navbar navbar-expand-md bg-success px-3">
     <a class="navbar-brand" href="<?= BASE_URL ?>/index.php">CRUD Alunos</a>
@@ -16,7 +23,7 @@ include_once(__DIR__ . "/../../util/config.php")
             </div>
         </li>
         <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navDropDown2" data-bs-toggle="dropdown">Nome</a>
+                <a class="nav-link dropdown-toggle" href="#" id="navDropDown2" data-bs-toggle="dropdown"><?= $nome ?></a>
             <div class="dropdown-menu"> 
                 <a class="dropdown-item" href="<?= BASE_URL ?>/view/login/sair.php">Sair</a>
             </div>

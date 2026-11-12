@@ -41,4 +41,7 @@ class LoginController {
         $this->loginService->removerUsuarioSessao();
     }
 
+    public function getNomeUsuarioLogado(){
+        return $this->loginService->getNomeUsuarioLogado();
+    }
 }   
