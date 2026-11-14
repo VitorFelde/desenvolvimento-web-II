@@ -35,7 +35,6 @@ class LoginService {
 
     public function removerUsuarioSessao(){
         $this->ativarSessao();
-        session_unset();
         session_destroy();
     }
 
