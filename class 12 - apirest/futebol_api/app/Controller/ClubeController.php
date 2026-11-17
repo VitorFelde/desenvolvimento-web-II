@@ -33,4 +33,76 @@ class ClubeController {
 		return $response->withHeader("Content-Type", "application/json")->withStatus(200);
 	}
 
+	public function inserir(Request $request, Response $response, $args ){
+		$clubeArrayAssoc = $request->getParsedBody();
+		$clube = $this->clubeMapper->mapFromJsonToObject($clubeArrayAssoc);
+
+		$erro = $this->clubeService->validar($clube);
+		if (!$erro) {
+			try {
+				$clube = $this->clubeDAO->insert($clube);
+				$response->getBody()->write(json_encode($clube, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE));
+
+				return $response->withHeader("Content-Type", "application/json")->withStatus(201);
+			} catch(PDOException $e) {
+				$jsonErro = MensagemErro::getJSONErro(
+					"Erro ao inserir um clube", $e->getMessage(), 500);
+					
+					$response->getBody()->write($jsonErro);
+
+					return $response->withHeader("Content-Type", "application/json")->withStatus(500);
+			}
+		} else {
+			$erroJson = MensagemErro::getJSONErro($erro. $erro, 400);
+			$response->getBody()->write($erroJson);
+			
+			return $response->withHeader("Content-Type", "application/json")->withStatus(400);
+
+		}
+	
+		$response->getBody()->write(print_r($clube, true));
+		return $response;
+	}
+
+	public function buscar(Request $request, Response $response, $args){
+		$id = $args["id"];
+
+		$clube = $this->clubeDAO->findById($id);
+
+		if ($clube) {
+			$response->getBody()->write(json_encode($clube, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE));
+			return $response->withHeader("Content-Type", "application/json")->withStatus(200);
+		} else {
+			return $response->withStatus(404);
+
+		}
+
+	} 
+
+	public function excluir(Request $request, Response $response, $args){
+		$id = $args["id"];
+
+		$clube = $this->clubeDAO->findById($id);
+
+		if ($clube) {
+			try {
+				$excluir = $this->clubeDAO->deleteById($id);
+				return $response->withHeader("Content-Type", "application/json")->withStatus(200);
+			} catch(PDOException $e) {
+				$jsonErro = MensagemErro::getJSONErro(
+					"Erro ao excluir um clube", $e->getMessage(), 500);
+				$response->getBody()->write($jsonErro);
+
+				return $response->withHeader("Content-Type", "application/json")->withStatus(404);
+			}
+
+		} else {
+			return $response->withStatus(404);
+		}
+	}
+
+	public function alterar(Request $request, Response $response, $args){
+	
+	}
+
 }

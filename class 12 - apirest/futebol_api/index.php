@@ -50,6 +50,10 @@ $app->get('/ola2', function (Request $request, Response $response, $args) {
 });
 
 $app->get("/clubes", ClubeController::class . ":listar");
+$app->get("/clubes/{id}", ClubeController::class . ":buscar");
+$app->post("/clubes", ClubeController::class . ":inserir");
+$app->put("/clubes/{id}", ClubeController::class . ":alterar");
+$app->delete("/clubes/{id}", ClubeController::class . ":excluir");
 
 //Tratamento para rota não encontrada
 $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {
