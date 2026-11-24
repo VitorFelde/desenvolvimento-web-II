@@ -6,7 +6,7 @@
         private int $id;
         private string  $nome;
         private string $apelido;
-        private int $titulo;
+        private string $titulo;
         private Categoria $categoria;
         private Estilo $estilo;
 
@@ -38,7 +38,7 @@
             return $this->titulo;
         }
 
-        public function setTitulo(int $titulo){
+        public function setTitulo(string $titulo){
             $this->titulo = $titulo;
         }   
 
