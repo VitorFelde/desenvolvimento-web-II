@@ -56,8 +56,40 @@ class LutadorDAO {
     }
 
     //funcao usada para pegar os dados do banco que vem em formato de array, e transformamos em valores do tipo categoria, genero e lutador
-    public function map (){
+    public function map ($saida){
+        $lutadores = array();
 
+        foreach($saida as $l){
+            
+            /*LUTADOR*/
+
+            $lutador = new Lutador();
+
+            $lutador->setId($l["id"]);
+            $lutador->setNome($l["nome"]);
+            $lutador->setApelido($l["apelido"]);
+            $lutador->setTitulo($l["titulo"]);
+
+            /*CATEGORIA*/
+
+            $categoria = new Categoria();
+            
+            $categoria->setIdCategoria($l["id_categoria"]);
+            $categoria->setCategoria($l["categoria"]);
+            $lutador->setCategoria($categoria);
+
+            /*ESTILO*/
+
+            $estilo = new Estilo();
+
+            $estilo->setIdEstilo($l["id_estilo"]);
+            $estilo->setEstilo($l["estilo"]);
+            $lutador->setEstilo($estilo);
+
+            array_push($lutadores, $lutador);
+        }
+
+    return $lutadores; 
     }
 
 }
