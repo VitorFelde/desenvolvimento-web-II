@@ -1,24 +1,39 @@
 <?php
 
 include_once(__DIR__ . "/../util/Connection.php");
-include_once(__DIR__ . "/../util/Lutador.php");
+include_once(__DIR__ . "/../model/Lutador.php");
+include_once(__DIR__ . "/../model/Categoria.php");
+include_once(__DIR__ . "/../model/Estilo.php");
 
 class LutadorDAO {
     //funcao para listar os alunos que serao inseridos 
-    public function listar (){
-        $sql = "SELECT nome, apelido, titulo from lutador";
+    public function listar(){
+    $sql = "SELECT
+                lutador.id,
+                lutador.nome,
+                lutador.apelido,
+                lutador.titulo,
+                categoria.id AS id_categoria,
+                categoria.cat AS categoria,
+                estilo.id AS id_estilo,
+                estilo.est AS estilo
+            FROM lutador
+            INNER JOIN categoria ON lutador.id_categoria = categoria.id 
+            /*aqui entramos dentro da tabela categoria, atraves do id categoria que criamos relacionado na tabela lutador, e selecionamos pelo id*/
+            INNER JOIN estilo ON lutador.id_estilo = estilo.id";
+            /*mesma coisa aqui, mas estamos fazendo para o estilo*/
 
-        $conn = Connection::getConnection();
+    $conn = Connection::getConnection();
 
-        $stmt = $conn->prepare($sql); //isso é usado para evitar que o programa recebe sql injection, entao usamos parametros para maior seguranca
+    $stmt = $conn->prepare($sql);
 
-        $stmt = execute();
+    $stmt->execute();
 
-        $saida = $stmt->fetchAll(); //isso é usado para pegar todas as informações encontradas pelas linhas acima e salvar em $saida
+    $saida = $stmt->fetchAll();
 
-        $lutadores = $this->map($saida); //entao pegamos os dados do banco, que sao arrays, e atribuimos a variavel
-        //lutadores, que sera usada mais tarde para pegar valor no listar e etc 
-    }
+    return $this->map($saida);
+    } 
+
 
     //funcao para buscar pelo id, que sera usada para editarmos baseado no id 
     public function buscarId (){
