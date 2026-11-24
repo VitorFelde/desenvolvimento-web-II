@@ -7,6 +7,7 @@ include_once(__DIR__ . "/../model/Estilo.php");
 
 class LutadorDAO {
     //funcao para listar os alunos que serao inseridos 
+    
     public function listar(){
     $sql = "SELECT
                 lutador.id,
@@ -36,24 +37,98 @@ class LutadorDAO {
 
 
     //funcao para buscar pelo id, que sera usada para editarmos baseado no id 
-    public function buscarId (){
+    public function buscarId ($id){
+         $sql = "SELECT
+                    lutador.id,
+                    lutador.nome,
+                    lutador.apelido,
+                    lutador.titulo,
+                    categoria.id AS id_categoria,
+                    categoria.cat AS categoria,
+                    estilo.id AS id_estilo,
+                    estilo.est AS estilo
+                FROM lutador
+                INNER JOIN categoria ON lutador.id_categoria = categoria.id
+                INNER JOIN estilo ON lutador.id_estilo = estilo.id
+                WHERE lutador.id = ?";
+
+        $conn = Connection::getConnection();
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute([$id]); //parametro que vai ser passado dps
+
+        $saida = $stmt->fetchAll(); //usamos apenas o fetch pq queremos apenas um resultado, que é o id que estamos buscando 
+
+        $lutadores = $this->map($saida);
+
+        if(count($lutadores) == 1)
+            return $lutadores[0]; 
+        elseif(count($lutadores) == 0)  
+            return null;
 
     }
 
     //funcao para inserir lutadores na lista
-    public function inserir (){
+    public function inserir (Lutador $lutador){
+        $sql = "INSERT INTO lutador (nome, apelido, titulo, id_categoria, id_estilo) VALUES (?, ?, ?, ?, ?)";
+
+        try {
+            $conn = Connection::getConnection();
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->execute(array($lutador->getNome(), $lutador->getApelido(), $lutador->getTitulo(), $lutador->getCategoria()->getIdCategoria(), $lutador->getEstilo()->getIdEstilo()));
+        } catch (PDOException $e) {
+            echo "Erro ao inserir lutador: " . $e->getMessage(); //getmessage serve para mostrar o pq do erro
+        }    
 
     }
 
     //funcao para editar dados de um lutador na lista
-    public function editar(){
+    public function editar(Lutador $lutador){
+        $sql = "UPDATE lutador SET
+                    nome = ?,
+                    apelido = ?,
+                    titulo = ?,
+                    id_categoria = ?,
+                    id_estilo = ?
+                WHERE id = ?";
 
-    }
+        try {
+            $conn = Connection::getConnection();
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->execute(array(
+                $lutador->getNome(),
+                $lutador->getApelido(),
+                $lutador->getTitulo(),
+                $lutador->getCategoria()->getIdCategoria(),
+                $lutador->getEstilo()->getIdEstilo(),
+                $lutador->getId()
+            ));
+
+        } catch (PDOException $e) {
+            echo "Erro ao editar lutador: " . $e->getMessage();
+        }
+}
 
     //funcao para excluir um lutador da lista
-    public function excluir (){
+    public function excluir(int $id){
+        $sql = "DELETE FROM lutador WHERE id = ?";
 
-    }
+        try {
+            $conn = Connection::getConnection();
+
+            $stmt = $conn->prepare($sql);
+
+            $stmt->execute(array($id));
+
+        } catch (PDOException $e) {
+            echo "Erro ao excluir lutador: " . $e->getMessage();
+        }
+}
 
     //funcao usada para pegar os dados do banco que vem em formato de array, e transformamos em valores do tipo categoria, genero e lutador
     public function map ($saida){
