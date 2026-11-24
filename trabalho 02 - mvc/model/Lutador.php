@@ -7,7 +7,6 @@
         private string  $nome;
         private string $apelido;
         private int $titulo;
-        private string $genero;
         private Categoria $categoria;
         private Estilo $estilo;
 
@@ -41,15 +40,7 @@
 
         public function setTitulo(int $titulo){
             $this->titulo = $titulo;
-        }
-
-        public function getGenero(){
-            return $this->genero;
-        }
-
-        public function setGenero(string $genero){
-            $this->genero = $genero;
-        }
+        }   
 
         public function getCategoria(){
             return $this->categoria;
