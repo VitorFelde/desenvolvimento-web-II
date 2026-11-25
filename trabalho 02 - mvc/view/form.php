@@ -1,8 +1,8 @@
 <?php
 
-include_once(__DIR__ . "/../../controller/LutadorController.php");
-include_once(__DIR__ . "/../../DAO/CategoriaDAO.php");
-include_once(__DIR__ . "/../../DAO/EstiloDAO.php");
+include_once(__DIR__ . "/../controller/LutadorController.php");
+include_once(__DIR__ . "/../DAO/CategoriaDAO.php");
+include_once(__DIR__ . "/../DAO/EstiloDAO.php");
 
 $categoriaDAO = new CategoriaDAO();
 $estiloDAO = new EstiloDAO();
