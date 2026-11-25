@@ -1,5 +1,6 @@
-<?php 
+<?php
 
-header (__DIR__ . "view/form.php");
+header("Location: view/listar.php");
+exit;
 
 ?>
