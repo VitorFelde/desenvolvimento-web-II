@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 include_once(__DIR__ . "/../../controller/LutadorController.php");
-include_once(__DIR__ . "/../../dao/CategoriaDAO.php");
-include_once(__DIR__ . "/../../dao/EstiloDAO.php");
+include_once(__DIR__ . "/../../DAO/CategoriaDAO.php");
+include_once(__DIR__ . "/../../DAO/EstiloDAO.php");
 
 $categoriaDAO = new CategoriaDAO();
 $estiloDAO = new EstiloDAO();
@@ -37,7 +37,6 @@ include_once(__DIR__ . "/../include/header.php");
                 <label for="categoria" class="form-label">Categoria:</label>
 
                 <select name="categoria" id="categoria" class="form-control">
-
                     <option value="">--Escolha a categoria do seu(ua) lutador(a)--</option>
 
                     <?php foreach ($categorias as $c): ?>
@@ -45,7 +44,6 @@ include_once(__DIR__ . "/../include/header.php");
                             <?= $c->getCategoria() ?>
                         </option>
                     <?php endforeach; ?>
-
                 </select>
             </div>
 
@@ -53,7 +51,6 @@ include_once(__DIR__ . "/../include/header.php");
                 <label for="estilo" class="form-label">Estilo:</label>
 
                 <select name="estilo" id="estilo" class="form-control">
-
                     <option value="">--Escolha o estilo em que seu(ua) lutador(a) luta--</option>
 
                     <?php foreach ($estilos as $e): ?>
@@ -61,7 +58,6 @@ include_once(__DIR__ . "/../include/header.php");
                             <?= $e->getEstilo() ?>
                         </option>
                     <?php endforeach; ?>
-
                 </select>
             </div>
 
@@ -69,17 +65,9 @@ include_once(__DIR__ . "/../include/header.php");
                 <label for="titulo" class="form-label">Título:</label>
 
                 <select name="titulo" id="titulo" class="form-control">
-
                     <option value="">Seu(ua) lutador(a) tem cinturão?</option>
-
-                    <option value="S" <?= $lutador && $lutador->getTitulo() == "S" ? "selected" : "" ?>>
-                        Sim
-                    </option>
-
-                    <option value="N" <?= $lutador && $lutador->getTitulo() == "N" ? "selected" : "" ?>>
-                        Não
-                    </option>
-
+                    <option value="S" <?= $lutador && $lutador->getTitulo() == "S" ? "selected" : "" ?>>Sim</option>
+                    <option value="N" <?= $lutador && $lutador->getTitulo() == "N" ? "selected" : "" ?>>Não</option>
                 </select>
             </div>
 
@@ -110,7 +98,7 @@ include_once(__DIR__ . "/../include/header.php");
 
 <a class="btn btn-outline-secondary mt-3" href="listar.php">Voltar</a>
 
-<?php 
+<?php
 
 include_once(__DIR__ . "/../include/footer.php");
 
