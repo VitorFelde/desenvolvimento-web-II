@@ -5,7 +5,6 @@ include_once(__DIR__ . "/../../model/Categoria.php");
 include_once(__DIR__ . "/../../model/Estilo.php");
 include_once(__DIR__ . "/../../controller/LutadorController.php");
 
-$msgErro = "";
 $erros = array();
 $lutador = NULL;
 
@@ -39,9 +38,6 @@ if (isset($_POST["nome"])) {
     if (empty($erros)) {
         header("location: listar.php");
         exit;
-    }
-    else {
-        $msgErro = implode("<br>", $erros);
     }
 }
 
