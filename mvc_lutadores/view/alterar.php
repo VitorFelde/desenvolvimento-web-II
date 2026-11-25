@@ -1,9 +1,9 @@
 <?php
 
-include_once(__DIR__ . "/../../model/Lutador.php");
-include_once(__DIR__ . "/../../model/Categoria.php");
-include_once(__DIR__ . "/../../model/Estilo.php");
-include_once(__DIR__ . "/../../controller/LutadorController.php");
+include_once(__DIR__ . "/../model/Lutador.php");
+include_once(__DIR__ . "/../model/Categoria.php");
+include_once(__DIR__ . "/../model/Estilo.php");
+include_once(__DIR__ . "/../controller/LutadorController.php");
 
 $erros = array();
 $lutador = NULL;
