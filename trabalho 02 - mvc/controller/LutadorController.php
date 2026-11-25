@@ -1,6 +1,6 @@
 <?php
 
-include_once(__DIR__ . "/../dao/LutadorDAO.php");
+include_once(__DIR__ . "/../DAO/LutadorDAO.php");
 include_once(__DIR__ . "/../model/Lutador.php");
 include_once(__DIR__ . "/../model/Categoria.php");
 include_once(__DIR__ . "/../model/Estilo.php");
@@ -21,14 +21,16 @@ class LutadorController {
         $erros = $this->validar($lutador);
 
         if (empty($erros)) {
-            $this->lutadorDAO->inserir($lutador);
+            $msgErro = $this->lutadorDAO->inserir($lutador);
+            if ($msgErro)
+                array_push($erros, $msgErro);
         }
 
         return $erros;
     }
 
     public function excluir(int $id){
-        $this->lutadorDAO->excluir($id);
+        return $this->lutadorDAO->excluir($id);
     }
 
     public function buscarId(int $id): ?Lutador {
@@ -39,7 +41,9 @@ class LutadorController {
         $erros = $this->validar($lutador);
 
         if (empty($erros)) {
-            $this->lutadorDAO->editar($lutador);
+            $msgErro = $this->lutadorDAO->editar($lutador);
+            if ($msgErro)
+                array_push($erros, $msgErro);
         }
 
         return $erros;
