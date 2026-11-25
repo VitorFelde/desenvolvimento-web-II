@@ -29,5 +29,7 @@ CREATE TABLE lutador (
     titulo varchar(1) NOT NULL,
     id_estilo int NOT NULL,
     id_categoria int NOT NULL,
-    CONSTRAINT lutad PRIMARY KEY (id)
+    CONSTRAINT lutad PRIMARY KEY (id),
+    CONSTRAINT fk_lutador_categoria FOREIGN KEY (id_categoria) REFERENCES categoria(id),
+    CONSTRAINT fk_lutador_estilo FOREIGN KEY (id_estilo) REFERENCES estilo(id)
 );
