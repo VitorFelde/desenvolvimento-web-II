@@ -54,6 +54,7 @@ M - MODEL - Onde modelamos os dados vindo do banco para mostrar certo ao usuario
 V - VIEW - Tudo o que o usuário vai enxergar, páginas e estrutura visual do projeto
 <br>
 C - CONTROLLER - Controla quem chamar dependendo da requisição solicitada pelo usuário
+<br><br>
 Temos as 3 camadas explicítas no projeto (model, view e controller).
 <br><br>
 
@@ -66,7 +67,7 @@ R - READ - Ler os dados, e então fica critério do usuário ver o que quer faze
 U - UPDATE - Atualizar dados previamente inseridos
 <br>
 D - DELETE - Deletar um dado inserido anteriormente
-<br>
+<br><br>
 Temos as 4 camadas divididas (DAO e controller).
 <br><br>
 A camada util, que serve para conectar com o banco de dados, através da Connection.php e a config.php que é para liberar o acesso ao banco.
