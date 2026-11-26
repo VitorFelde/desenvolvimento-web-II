@@ -56,7 +56,7 @@ V - VIEW - Tudo o que o usuário vai enxergar, páginas e estrutura visual do pr
 C - CONTROLLER - Controla quem chamar dependendo da requisição solicitada pelo usuário
 Temos as 3 camadas explicítas no projeto (model, view e controller).
 <br>
-+ CRUD
+E também a estrutura CRUD
 <br>
 C - CREATE - Criar/Inserir, nesse nosso caso, um lutador
 <br>
