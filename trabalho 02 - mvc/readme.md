@@ -23,16 +23,16 @@ que vai ser importante, para mostrar as mensagens de campos faltantes no process
 Na classe LutadorController.php, temos o seguinte: 
 <br>
 ### `public function __construct(){
-###        $this->lutadorDAO = new LutadorDAO();
-###}`
+        $this->lutadorDAO = new LutadorDAO();
+}`
 <br>
 
 Isso existe por duas razões
 1 - Sem o método construtor, toda vez que mexêssemos no banco, seja para listar, editar, excluir ou inserir, teriamos que
 criar um novo objeto DAO, com o construtor isso fica mto mais fácil, como por exemplo: 
 ### `public function listar(){
-###          return $this->lutadorDAO->listar();
-### }`
+          return $this->lutadorDAO->listar();
+}`
 <br>
   onde temos um retorno do método listar que está dentro do DAO, com o construtor, acessamos o DAO sem precisar fazer por 
   exemplo:<br> <h4>$dao = new LutadorDAO();</h4>
