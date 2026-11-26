@@ -4,7 +4,9 @@ Explicações:
 
 condição ? se verdadeira : se falsa
 
-No form.php por exemplo, temos "<h3><?= $lutador && $lutador->getId() > 0 ? "Alterar" : "Inserir" ?></h3>"
+No form.php por exemplo, temos 
+<br>
+"<h3><?= $lutador && $lutador->getId() > 0 ? "Alterar" : "Inserir" ?></h3>"
 
 Nesse caso, estamos verificando, se existe lutador, e seu id for maior que zero, ou seja, se for válido, então ele imprime o
 alterar, já que estamos mexendo em algo que ja existe. Se não existe o lutador, logo entramos no inserir, pq dai o programa
@@ -19,6 +21,7 @@ que vai ser importante, para mostrar as mensagens de campos faltantes no process
 <h1>Método construtor</h1>
 
 Na classe LutadorController.php, temos o seguinte: 
+<br>
 public function __construct(){
         $this->lutadorDAO = new LutadorDAO();
 }
