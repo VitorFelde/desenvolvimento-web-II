@@ -56,7 +56,7 @@ V - VIEW - Tudo o que o usuário vai enxergar, páginas e estrutura visual do pr
 C - CONTROLLER - Controla quem chamar dependendo da requisição solicitada pelo usuário
 <br><br>
 Temos as 3 camadas explicítas no projeto (model, view e controller).
-<br><br>
+<br>
 
 E também a estrutura CRUD
 <br><br>
