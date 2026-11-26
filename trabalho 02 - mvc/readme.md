@@ -5,8 +5,8 @@ Explicações:
 condição ? se verdadeira : se falsa
 
 No form.php por exemplo, temos 
-<br>
-<h4><?= $lutador && $lutador->getId() > 0 ? "Alterar" : "Inserir" ?></h4>
+
+<h4>"<?= $lutador && $lutador->getId() > 0 ? "Alterar" : "Inserir" ?>"</h4>
 
 Nesse caso, estamos verificando, se existe lutador, e seu id for maior que zero, ou seja, se for válido, então ele imprime o
 alterar, já que estamos mexendo em algo que ja existe. Se não existe o lutador, logo entramos no inserir, pq dai o programa
