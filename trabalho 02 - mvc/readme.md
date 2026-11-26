@@ -12,7 +12,7 @@ Nesse caso, estamos verificando, se existe lutador, e seu id for maior que zero,
 
 # Campos NULL no banco?
 
-Na classe model, temos a declaração de variáveis, que em quase todos os atributos, principalmente do `Lutador.php`, tem a seguinte estrutura: `private ?string $nome;` - Fazemos isso pq dessa forma, a variável aceita tanto uma String, quanto um valor null, que vai ser importante, para mostrar as mensagens de campos faltantes no processo de envio do formulário.
+Na classe model, temos a declaração de variáveis, que em quase todos os atributos, principalmente do `Lutador.php`, tem a seguinte estrutura: <br> `private ?string $nome;` <br> Fazemos isso pq dessa forma, a variável aceita tanto uma String, quanto um valor null, que vai ser importante, para mostrar as mensagens de campos faltantes no processo de envio do formulário.
 
 # Método construtor
 
