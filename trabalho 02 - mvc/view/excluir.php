@@ -7,7 +7,7 @@ if (isset($_GET["id"]))
     $id = $_GET["id"];
 
 if (!is_numeric($id) || $id <= 0) {
-    echo "ID inválido!<br>";
+    echo "ID inválido<br>";
     echo "<a href='listar.php'>Voltar</a>";
     exit;
 }
