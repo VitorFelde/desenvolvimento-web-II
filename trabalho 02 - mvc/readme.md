@@ -35,6 +35,7 @@ criar um novo objeto DAO, com o construtor isso fica mto mais fácil, como por e
 }`
 <br>
   onde temos um retorno do método listar que está dentro do DAO, com o construtor, acessamos o DAO sem precisar fazer por 
-  exemplo:<br> <h4>$dao = new LutadorDAO();</h4>
+  exemplo:<br> 
+  ### `$dao = new LutadorDAO();`
   2 - Se fizéssemos dessa maneira, não poderiamos esquecer de instanciar o objeto, e caso esquecessemos, teriamos um fatal
   error que nos atrapalharia, então com o construtor, que instancia automaticamente, nao temos esse problema.
