@@ -18,15 +18,17 @@ que vai ser importante, para mostrar as mensagens de campos faltantes no process
 
 <h1>Método construtor</h1>
 
-Na classe LutadorController.php, temos o seguinte: "public function __construct(){
+Na classe LutadorController.php, temos o seguinte: 
+public function __construct(){
         $this->lutadorDAO = new LutadorDAO();
-    }"
+}
+
 Isso existe por duas razões
 1 - Sem o método construtor, toda vez que mexêssemos no banco, seja para listar, editar, excluir ou inserir, teriamos que
 criar um novo objeto DAO, com o construtor isso fica mto mais fácil, como por exemplo: 
-"public function listar(){
+public function listar(){
         return $this->lutadorDAO->listar();
-  }"
+}
   onde temos um retorno do método listar que está dentro do DAO, com o construtor, acessamos o DAO sem precisar fazer por 
   exemplo: $dao = new LutadorDAO();
   2 - Se fizéssemos dessa maneira, não poderiamos esquecer de instanciar o objeto, e caso esquecessemos, teriamos um fatal
