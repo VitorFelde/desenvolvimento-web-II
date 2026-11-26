@@ -48,7 +48,7 @@ if (isset($_POST["nome"])) {
         $id = $_GET["id"];
 
     if (!is_numeric($id) || $id <= 0) {
-        echo "ID inválido!<br>";
+        echo "ID inválido<br>";
         echo "<a href='listar.php'>Voltar</a>";
         exit;
     }
@@ -56,7 +56,7 @@ if (isset($_POST["nome"])) {
     $lutador = $lutadorCont->buscarId($id);
 
     if (!$lutador) {
-        echo "Nenhum lutador encontrado para o ID!<br>";
+        echo "Nenhum lutador encontrado para o ID<br>";
         echo "<a href='listar.php'>Voltar</a>";
         exit;
     }
