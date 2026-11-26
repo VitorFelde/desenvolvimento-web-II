@@ -22,3 +22,26 @@ Na classe `LutadorController.php`, temos o seguinte:
 public function __construct(){
     $this->lutadorDAO = new LutadorDAO();
 }
+```
+
+# MAP no DAO
+
+No MAP por exemplo do `CategoriaDAO.php`:
+
+```php
+private function map($saida){$categorias = array();
+
+    foreach($saida as $d){$categoria = new Categoria();
+
+        $categoria->setIdCategoria($d["id"]);
+        $categoria->setCategoria($d["cat"]);
+
+        array_push($categorias,$categoria); //putting in our array the elements we just got
+    }
+
+    return $categorias;
+}
+```
+
+estamos pegando o que vem do Banco de Dados, em forma de Array Associativo, e transformando em um objeto da class model, que vai modelar, e deixar pronto para fazermos o CRUD no view
+
