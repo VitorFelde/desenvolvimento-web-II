@@ -55,9 +55,10 @@ V - VIEW - Tudo o que o usuário vai enxergar, páginas e estrutura visual do pr
 <br>
 C - CONTROLLER - Controla quem chamar dependendo da requisição solicitada pelo usuário
 Temos as 3 camadas explicítas no projeto (model, view e controller).
-<br>
+<br><br>
+
 E também a estrutura CRUD
-<br>
+<br><br>
 C - CREATE - Criar/Inserir, nesse nosso caso, um lutador
 <br>
 R - READ - Ler os dados, e então fica critério do usuário ver o que quer fazer com os dados lidos, no nosso caso, é a listagem
@@ -67,12 +68,12 @@ U - UPDATE - Atualizar dados previamente inseridos
 D - DELETE - Deletar um dado inserido anteriormente
 <br>
 Temos as 4 camadas divididas (DAO e controller).
-<br>
+<br><br>
 A camada util, que serve para conectar com o banco de dados, através da Connection.php e a config.php que é para liberar o acesso ao banco.
-<br>
+<br><br>
 O script SQL nomeado: baseLutadores.sql serve para mostrar o processo feito para as criações de tabelas no banco (PHPMyAdmin).
-<br>
+<br><br>
 Index.php possui apenas um header, pois toda vez que o projeto é aberto através do localhost, o navegador procura o index para ser a primeira coisa a mostrar ao usuario
 e no nosso caso, queremos que ele veja a lista de lutadores, com as opções de inserção, listagem, exclusão e edição.
-<br>
+<br><br>
 Por fim a camada include, serve apenas para salvar o cabeçalho (header.php) e o rodapé (footer.php), dessa forma, quando precisarmos inserir html no projeto, seja em qualquer camada, basta encontrar o diretório, e incluir a camada include, que ambos (header e footer) estarão lá, e ajudarão a deixar o código muito mais limpo e organizado.
